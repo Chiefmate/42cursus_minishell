@@ -12,7 +12,7 @@ WORD, NEWLINE, && AND_IF (보너스), || OR_IF (보너스), << DLESS, >> DGREAT,
 
 > 표기: <Variable>, TERMINAL, Terminal, ε(입실론 - 공문자열, empty)
 
-<start>
+"<start>
 ::= <complete_command>
 
 <complete_command>
@@ -105,4 +105,4 @@ WORD, NEWLINE, && AND_IF (보너스), || OR_IF (보너스), << DLESS, >> DGREAT,
 
 <newline_list> 
 ::= <newline_list> NEWLINE 
-| NEWLINE
+| NEWLINE"
