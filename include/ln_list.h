@@ -13,6 +13,9 @@
 #ifndef LN_LIST
 # define LN_LIST
 
+/* malloc, free, NULL */
+# include <stdlib.h>
+
 typedef	enum e_token_type{
 	ERR = -1,
 	WORD,
@@ -38,103 +41,30 @@ typedef	struct s_list
 	t_node	*head;
 }	t_list;
 
+/* list.c */
 t_list	*create_list(void);
 void	*destroy_list(t_node *plist);
+int		search_list(t_node *plist, t_token *pargu, t_token **data_out_ptr);
+int		count_list(t_list *plist);
+int 	empty_list(t_list *plist);
+
+/* node.c */
 int		add_node(t_node *plist, t_token *data_ptr);
 int		remove_node(t_node *plist, t_token *key_ptr, t_token **data_out_ptr);
-int		search_list(t_node *plist, t_token *p_argu, t_token **data_out_ptr);
-int		count_list(t_node *plist);
 
-////////////////////////////////////////////////////////////////////////////////
-// Prototype declarations
-
-/* Allocates dynamic memory for a list head node and returns its address to caller
-	return	head node pointer
-			NULL if overflow
-*/
-t_list *create_list(void);
-
-/* Deletes all data in list and recycles memory
-*/
-void destroy_list(t_list *plist);
-
-/* Inserts data into list
-	return	0 if overflow
-			1 if successful
-			2 if duplicated key
-*/
-int add_node(t_list *plist, t_token *data_in_ptr);
-
-/* Removes data from list
-	return	0 not found
-			1 deleted
-*/
-int remove_node(t_list *plist, t_token *keyPtr, t_token **data_out_ptr);
-
-/* interface to search function
-	Argu	key being sought
-	dataOut	contains found data
-	return	1 successful
-			0 not found
-*/
-int search_list(t_list *plist, t_token *pargu, t_token **data_out_ptr);
-
-/* returns number of nodes in list
-*/
-int count_list(t_list *plist);
-
-/* returns	1 empty
-			0 list has data
-*/
-int empty_list(t_list *plist);
-
-/* traverses data from list (forward)
-*/
-void traverse_list(t_list *plist, void (*callback)(const t_token *));
-
-/* traverses data from list (backward)
-*/
-void traverse_list_r(t_list *plist, void (*callback)(const t_token *));
-
-/* internal insert function
-	inserts data into a new node
-	return	1 if successful
-			0 if memory overflow
-*/
-static int _insert(t_list *plist, t_node *p_pre, t_token *data_in_ptr);
-
-/* internal delete function
-	deletes data from a list and saves the (deleted) data to dataOut
-*/
-static void _delete(t_list *plist, t_node *p_pre, t_node *p_loc, t_token **data_out_ptr);
-
-/* internal search function
-	searches list and passes back address of node
-	containing target and its logical predecessor
-	return	1 found
-			0 not found
-*/
-static int _search(t_list *plist, t_node **p_pre, t_node **p_loc, t_token *pargu);
-
-////////////////////////////////////////////////////////////////////////////////
-/* Allocates dynamic memory for a name structure, initialize fields(name, freq) and returns its address to caller
-	return	name structure pointer
-			NULL if overflow
-*/
+/* token.c */
 t_token *create_token(int type, char *value); 
+void 	destroy_token(t_token *ptoken);
+int 	cmp_token( const t_token *ptoken1, const t_token *ptoken2);
+void 	print_token(const t_token *data_ptr);
 
-/* Deletes all data in name structure and recycles memory
-*/
-void destroy_token(t_token *ptoken);
+/* traverse.c */
+void 	traverse_list(t_list *plist, void (*callback)(const t_token *));
+// void 	traverse_list_r(t_list *plist, void (*callback)(const t_token *));
 
-// compares two names in name structures
-// for createList function
-int cmp_token( const tName *pName1, const tName *ptoken2);
-
-// prints contents of name structure
-// for traverseList and traverseListR functions
-void print_token(const tName *dataPtr);
-
-
+/* internal.c */
+int _insert(t_list *plist, t_node *p_pre, t_token *data_in_ptr);
+void _delete(t_list *plist, t_node *p_pre, t_node *p_loc, t_token **data_out_ptr);
+int _search(t_list *plist, t_node **p_pre, t_node **p_loc, t_token *pargu);
 
 #endif
