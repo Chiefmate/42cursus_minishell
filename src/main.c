@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 #include "../include/minishell.h"
 
+int is_white_space(char *line)
+{
+	while (*line)
+	{
+		if (*line != 32 && !(*line >= 9 && *line <= 13))
+		{
+			return (0);
+		}
+		line++;
+	}
+	return (1);
+}
+
 void main_init(int argc, char *argv[])
 {
 	struct termios term;
@@ -18,6 +31,7 @@ void main_init(int argc, char *argv[])
 	/*/
 		if (argc != 1)
 			exit_with_err("argument input error", NULL, 126);
+			나중에
 	/*/
 	tcgetattr(STDIN_FILENO, &term);
 	term.c_cflag &= ~(ECHOCTL);
@@ -38,6 +52,18 @@ int main(int argc, char *argv[], char *envp[])
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(argc, argv);
 	init_env_list(&env_head, envp);
+	while (1)
+	{
+		line = readline("minishell $ ");
+		if (!line)
+			break;
+		if (*line != '\0')
+			add_history(line);
+		if (*line != '\0' && !is_whitespace(line))
+		{
+			cmd = ft_list_init();
+		}
+	}
 
 	return (0);
 }
