@@ -1,6 +1,11 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#include <stdbool.h>
+#include <stdlib.h>
+
+int g_exit_code;
+
 typedef struct s_cmd
 {
   char **argv;
