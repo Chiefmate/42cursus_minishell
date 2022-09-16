@@ -31,6 +31,7 @@ void main_init(int argc, char *argv[])
 	/*/
 		if (argc != 1)
 			exit_with_err("argument input error", NULL, 126);
+			나중에
 	/*/
 	tcgetattr(STDIN_FILENO, &term);
 	term.c_cflag &= ~(ECHOCTL);
