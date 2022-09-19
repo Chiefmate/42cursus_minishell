@@ -12,9 +12,9 @@ typedef struct s_cmd
   int argc;
   bool is_pipe;
   bool is_dollar;
-  int fd[2];
-  int infile;
-  int outfile;
+  int fd[2];   // pipe
+  int infile;  // redirection
+  int outfile; // redirection
   char *cmd_path;
   struct s_cmd *prev;
   struct s_cmd *next;
