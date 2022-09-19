@@ -62,6 +62,8 @@ int main(int argc, char *argv[], char *envp[])
 		if (*line != '\0' && !is_whitespace(line))
 		{
 			cmd = ft_list_init();
+			parse
+			replace
 		}
 	}
 

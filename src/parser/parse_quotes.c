@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   traverse.c                                         :+:      :+:    :+:   */
+/*   parse_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 19:27:50 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/09 19:27:50 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/17 14:32:25 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/17 14:32:25 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ln_list.h"
+#include "parser.h"
 
-/* traverses data from list (forward)
-*/
-void traverse_list(t_list *plist, void (*callback)(const t_token *))
+int	parse_quotes(char c, int quotes, t_cmd *cmd)
 {
-	t_node	*temp;
+	int	ret;
 
-	temp = plist->head;
-	while (temp != NULL)
+	ret = quotes;
+	if (c == '$')
+		cmd->is_dollar = true;
+	else if (c == '\'')
 	{
-		callback(temp->data);
-		temp = temp->next;
+		if (quotes == 1)
+			ret = 0;
+		else if (quotes == 2)
+			ret = 2;
+		else
+			ret = 1;
 	}
-	return ;
+	else if (c == '\"')
+	{
+		if (quotes == 2)
+			ret = 0;
+		else if (quotes == 1)
+			ret = 1;
+		else
+			ret = 2;
+	}
+	return (ret);
 }
-
-/* traverses data from list (backward)
-*/
-// void traverse_list_r(t_list *plist, void (*callback)(const t_token *))
-// {
-// 	t_node	*temp;
-
-// }

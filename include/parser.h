@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_char.c                                  :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 14:40:09 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/16 14:40:09 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/17 14:43:38 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/17 14:43:38 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#ifndef PARSER_H
+# define PARSER_H
 
-char	*ft_strjoin_char(char *s, char c)
+# include <stdbool.h>
+
+typedef struct s_cmd
 {
-	char	*ret;
-	size_t	s_len;
+	char			**argv;
+	int				argc;
+	bool			is_pipe;
+	bool			is_dollar;
+	int				fd[2];
+	int				infile;
+	int				outfile;
+	char			*cmd_path;
+	struct s_cmd	*prev;
+	struct s_cmd	*next;
+}				t_cmd;
 
-	if (!s && !c)
-		return (0);
-	else if (!s)
-		return (ft_strdup(&c));
-	s_len = ft_strlen(s);
-	ret = (char *)malloc(sizeof(char) * (s_len + 2));
-	if (!ret)
-		return (0);
-	ft_strlcpy(ret, s, s_len + 1);
-	ft_strlcpy(ret + s_len, &c, 2);
-	free(s);
-	return (ret);
-}
+#endif
