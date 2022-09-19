@@ -34,7 +34,7 @@ void main_init(int argc, char *argv[])
 			나중에
 	/*/
 	tcgetattr(STDIN_FILENO, &term);
-	term.c_cflag &= ~(ECHOCTL);
+	term.c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	set_signal(SHE, SHE);
 	g_exit_code = 0;
