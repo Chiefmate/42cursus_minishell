@@ -6,4 +6,6 @@
 #include <sys/types.h>
 #include <fcntl.h>
 
+void trim_cmd_argv(t_cmd *cmd, const char *set, int size);
+
 #endif
