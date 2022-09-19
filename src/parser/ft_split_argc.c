@@ -49,7 +49,31 @@ static int	get_word_cnt(char const *str, char c)
 	return (cnt);
 }
 
-set_worddup
+static char	**get_words_dup(char const *s, char c, char **mem)
+{
+	size_t	word_len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (!(*s))
+			break ;
+		word_len = 0;
+		while (s[word_len] && s[word_len] != c)
+			word_len++;
+		mem[i] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!mem[i])
+			return (is_free(mem, i));
+		ft_strlcpy(mem[i], s, word_len + 1);
+		s = s + word_len;
+		i++;
+	}
+	mem[i] = NULL;
+	return (mem);
+}
 
 char	**ft_split_argc(char const *s, char c, int *argc)
 {
@@ -62,6 +86,6 @@ char	**ft_split_argc(char const *s, char c, int *argc)
 	ret = (char **)malloc(sizeof(char *) * (*argc + 1));
 	if (!ret)
 		return (NULL);
-	ret = set_worddup(s, c, ret);
+	ret = get_words_dup(s, c, ret);
 	return (ret);
 }
