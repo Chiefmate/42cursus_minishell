@@ -1,3 +1,4 @@
+
 #include "utiles.h"
 
 void signal_handler(int signo)
@@ -30,4 +31,5 @@ void set_signal(int sig_int, int sig_quit)
     signal(SIGQUIT, SIG_DFL);
   if (sig_quit == SHE)
     signal(SIGQUIT, signal_handler);
+
 }
