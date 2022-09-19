@@ -1,3 +1,4 @@
+
 #ifndef MINISHELL_H
 #define MINISHELL_H
 
@@ -7,5 +8,6 @@
 #include <readline/history.h>
 #include "./struct.h"
 #include "./utiles.h"
+#include "./executor.h"
 
 #endif
