@@ -3,7 +3,7 @@
 #define UTILES_H
 
 #include <signal.h>
-#include <sys/errno.h>
+// #include <sys/errno.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
