@@ -6,9 +6,11 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 00:11:01 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:35:59 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// DONE
 
 #include "../include/executor.h"
 
@@ -26,7 +28,37 @@ static int check_heredoc(t_cmd *cmd)
 	return (idx);
 }
 
-static int wait_heredoc(pid_t)
+/* fork_heredoc()에서 호출되어
+ * heredoc의 input을 readline()을 통해 받아서
+ * cmd->infile에 write함
+ *
+ * 외부함수
+ * readline()
+ * ft_write()
+ */
+static void	input_heredoc(t_cmd *cmd, int lim_idx)
+{
+	char	*line;
+	char	*limiter;
+
+	limiter = cmd->argv[lim_idx];
+	while (1)
+	{
+		line = readline("> ");
+		if (!line)
+			break ;
+		else if (!ft_strcmp(line, limiter))
+		{
+			free(line);
+			break ;
+		}
+		ft_write(cmd->infile, line, ft_strlen(line));
+		ft_write(cmd->infile, "\n", 1);
+		free(line);
+	}
+}
+
+static int	wait_heredoc(pid_t pid)
 {
 	int status;
 	int signo;
@@ -41,7 +73,7 @@ static int wait_heredoc(pid_t)
 	return (EXIT_SUCCESS);
 }
 
-static int do_work_heredoc(t_cmd *cmd, int lim_idx)
+static int	fork_heredoc(t_cmd *cmd, int lim_idx)
 {
 	pid_t pid;
 	int ret;
@@ -66,7 +98,18 @@ static int do_work_heredoc(t_cmd *cmd, int lim_idx)
 	return (ret);
 }
 
-int heredoc(t_cmd *cmd_head)
+/*	init_heredoc()에서 호출되어 heredoc 기능 수행
+ *
+ * 외부함수
+ * heredoc.c (self)
+ * 		check_heredoc()
+ * 		fork_heredoc()
+ * tmp_file.c
+ * 		get_tmp_file_name()
+ * ft_open()
+ * ft_close()
+ */
+int	heredoc(t_cmd *cmd_head)
 {
 	char *tmp_file;
 	int idx;
@@ -82,7 +125,7 @@ int heredoc(t_cmd *cmd_head)
 		if (cur->infile > 0)
 			ft_close(cur->infile);
 		tmp_file = get_tmp_file_name();
-		exit_code = do_work_heredoc(cur, idx);
+		exit_code = fork_heredoc(cur, idx);
 		g_exit_code = exit_code;
 		if (exit_code == EXIT_SUCCESS)
 			cur->infile = ft_open(tmp_file, O_RDONLY, 0664);
