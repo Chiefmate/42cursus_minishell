@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:32:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:32:37 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 00:32:30 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 00:32:30 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef UTILS_H
+# define UTILS_H
 
-# include <stdbool.h>
+# include <signal.h>
+// #include <sys/errno.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <string.h>
+// # include <readline/readline.h>
 
-int	g_exit_code;
+# define SHE 0
+# define DFL 1
+# define IGN 2
 
-typedef struct s_cmd
-{
-	char			**argv;
-	int				argc;
-	bool			is_pipe;
-	bool			is_dollar;
-	int				fd[2];	 // pipe
-	int				infile;	 // redirection
-	int				outfile; // redirection
-	char			*cmd_path;
-	struct s_cmd	*prev;
-	struct s_cmd	*next;
-}	t_cmd;
+int		ft_close(int fd);
+int		ft_open(char *fname, int oflag, int mode);
 
-typedef struct	s_env
-{
-	char *key;
-	char *value;
-	struct s_env *next;
-	struct s_env *prev;
-}	t_env;
+void	print_err(char *str);
 
 #endif

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   is_exist_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 00:11:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 00:11:28 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 00:36:43 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#include "../include/utils.h"
 
-# include "./struct.h"
-# include "./utils.h"
-# include <sys/types.h>
-# include <fcntl.h>
+int is_exist_file(char *tmp_file_name)
+{
+  int fd;
 
-void trim_cmd_argv(t_cmd *cmd, const char *set, int size);
-
-#endif
+  fd = open(tmp_file_name, O_RDONLY);
+  close(fd);
+  if (fd == -1)
+    return (0);
+  else
+    return (1);
+}
