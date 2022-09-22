@@ -6,11 +6,16 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 00:10:58 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:34:28 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/executor.h"
+
+static char	**get_envp(t_env *head)
+{
+	
+}
 
 /* execute_cmd()의 내부 함수
  * builtin이 아닌 커맨드를 실행시킴
@@ -93,12 +98,31 @@ static void	do_cmd(t_cmd *cmd, t_env *env_head)
 	close_unused_fd(cmd, 1);
 }
 
-void executor(t_cmd *cmd_head, t_env *env_head)
+/*
+ * 외부함수
+ * executor.c (self)
+ * 		do_fork_cmd()
+ * 		do_cmd()
+ * check_valid_syntax.c
+ * 		check_valid_syntax()
+ * init_clear_cmd.c
+ * 		init_heredoc()
+ * 		clear_cmd()
+ * io_file_open.c
+ * 		io_file_open()
+ * executor_utils.c
+ * 		is_need_fork()
+ * wait_child.c
+ * 		wait_child()
+ * 
+ * set_signal()
+ */
+void	executor(t_cmd *cmd_head, t_env *env_head)
 {
 	t_cmd *cmd_cur;
 
 	cmd_cur = cmd_head;
-	if (check_valid_synax(cmd_head) == -1)
+	if (check_valid_syntax(cmd_head) == -1)
 		return (clear_cmd(cmd_head));
 	if (init_heredoc(cmd_cur) == -1)
 		return (clear_cmd(cmd_head));
