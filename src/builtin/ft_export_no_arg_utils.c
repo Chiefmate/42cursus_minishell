@@ -1,6 +1,18 @@
-#include "../include/builtin.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_export_no_arg_utils.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:58:25 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 20:29:03 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static void swap_env(t_env *env1, t_env *env2)
+#include "builtin.h"
+
+static void	swap_env(t_env *env1, t_env *env2)
 {
 	char *tmp_k;
 	char *tmp_v;
@@ -13,7 +25,7 @@ static void swap_env(t_env *env1, t_env *env2)
 	env2->value = tmp_v;
 }
 
-static t_env *dup_env(t_env *cur)
+static t_env	*dup_env(t_env *cur)
 {
 	t_env *new;
 
@@ -35,7 +47,7 @@ static t_env *dup_env(t_env *cur)
 	return (new);
 }
 
-t_env *dup_env_list(t_env *cur)
+t_env	*dup_env_list(t_env *cur)
 {
 	t_env *ret;
 	t_env *new;
@@ -58,7 +70,7 @@ t_env *dup_env_list(t_env *cur)
 	return (ret);
 }
 
-t_env *sort_env_list(t_env *head)
+t_env	*sort_env_list(t_env *head)
 {
 	t_env *cur;
 
@@ -76,7 +88,7 @@ t_env *sort_env_list(t_env *head)
 	return (head);
 }
 
-void free_env_list(t_env *env)
+void	free_env_list(t_env *env)
 {
 	t_env *next;
 

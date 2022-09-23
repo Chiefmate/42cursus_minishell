@@ -1,6 +1,18 @@
-#include "../include/builtin.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:57:54 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 20:25:08 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int is_option_n(char *str)
+#include "builtin.h"
+
+static int	is_option_n(char *str)
 {
 	if (str == NULL)
 		return (0);
@@ -14,7 +26,7 @@ static int is_option_n(char *str)
 	return (1);
 }
 
-static int check_option_n(int argc, char *argv[], int *idx)
+static int	check_option_n(int argc, char *argv[], int *idx)
 {
 	int i;
 	int option_n;
@@ -33,7 +45,7 @@ static int check_option_n(int argc, char *argv[], int *idx)
 	return (option_n);
 }
 
-int ft_echo(int argc, char *argv[])
+int	ft_echo(int argc, char *argv[])
 {
 	int idx;
 	int option_n;

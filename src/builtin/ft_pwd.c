@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_exist_file.c                                    :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:53:55 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 19:58:47 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 19:58:52 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "builtin.h"
 
-int	is_exist_file(char *tmp_file_name)
+int ft_pwd(void)
 {
-	int fd;
+	char *pwd;
 
-	fd = open(tmp_file_name, O_RDONLY);
-	close(fd);
-	if (fd == -1)
-		return (0);
-	else
-		return (1);
+	pwd = getcwd(NULL, 0);
+	ft_write(STDOUT_FILENO, pwd, ft_strlen(pwd));
+	ft_write(STDOUT_FILENO, "\n", 1);
+	free(pwd);
+	return (EXIT_SUCCESS);
 }
