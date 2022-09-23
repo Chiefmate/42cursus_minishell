@@ -1,11 +1,7 @@
 {
   "files.associations": {
 	"executor.h": "c",
-	"utiles.h": "c",
-<<<<<<< HEAD
-	"utils.h": "c"
-=======
+	"utils.h": "c",
 	"struct.h": "c"
->>>>>>> c8111469d2adf0c24b99c39a7123ef8e27180cc6
 }
 }
