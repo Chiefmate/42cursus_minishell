@@ -21,6 +21,9 @@ RM					=	rm -f
 INCS_DIR			=	./include/
 SRCS_DIR			=	./src/
 
+LDFLAGS				=	${HOME}/.brew/opt/readline/lib
+CPPFLAGS			=	${HOME}/.brew/opt/readline/include
+
 SRCS_NODIR			=	main.c \
 						init.c \
 						parser/parse.c \
@@ -52,10 +55,10 @@ OBJS = $(SRCS:.c=.o) $(SRCS_BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ -o $(NAME)
+	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ -o $(NAME) -lreadline -L${LDFLAGS} -I${CPPFLAGS}
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCS_DIR) -I ${CPPFLAGS} -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
