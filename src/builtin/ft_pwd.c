@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:47 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:58:52 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int ft_pwd(void)
+int	ft_pwd(void)
 {
 	char *pwd;
 

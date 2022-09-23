@@ -20,50 +20,44 @@ RM					=	rm -f
 
 INCS_DIR			=	./include/
 SRCS_DIR			=	./src/
+LIB_DIR				=	./libft/
 
-LDFLAGS				=	${HOME}/.brew/opt/readline/lib
-CPPFLAGS			=	${HOME}/.brew/opt/readline/include
+LDFLAGS				=	-L${HOME}/.brew/opt/readline/lib
+CPPFLAGS			=	-I${HOME}/.brew/opt/readline/include
 
-SRCS_NODIR			=	main.c \
-						init.c \
-						parser/parse.c \
-						parser/parse_quotes.c \
-						parser/replace.c \
-						parser/replace_utils.c \
-						parser/ft_split_argc.c \
-						parser/ft_strjoin_char.c \
-						executor/check_valid_syntax.c \
-						executor/executor_utils.c \
-						executor/io_file_open.c \
-						executor/tmp_file.c \
-						executor/close_unused_fd.c \
-						executor/heredoc.c \
-						executor/path.c \
-						executor/wait_child.c \
-						executor/executor.c \
-						executor/init_clear_cmd.c \
-						executor/redirection.c \
-						utils/exit_with_error.c \
-						utils/ft_system_call.c \
-						utils/ft_system_calls2.c \
-						utils/is_exist_file.c \
-						utils/signal.c \
+SRCS_BUILTIN		=	$(addprefix builtin/, cd_utils.c ft_cd.c ft_env.c \
+						ft_export.c ft_export_no_arg_utils.c ft_pwd.c env_utils.c \
+						ft_echo.c ft_exit.c ft_export_check_valid.c ft_getenv.c ft_unset.c)
+SRCS_EXECUTOR		=	$(addprefix executor/, check_valid_syntax.c close_unused_fd.c \
+						executor.c executor_utils.c heredoc.c init_clear_cmd.c io_file_open.c \
+						path.c redirection.c tmp_file.c wait_child.c)
+SRCS_PARSER			=	$(addprefix parser/, ft_split_argc.c ft_strjoin_char.c parse.c \
+						parse_quotes.c replace.c replace_utils.c)
+SRCS_UTILS			=	$(addprefix utils/, exit_with_error.c ft_system_call.c ft_system_call2.c is_exist_file.c signal.c)
+SRCS_STRUCT			=	$(addprefix struct/, cmd.c)
 
-SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NODIR))
+SRCS_NOSRCDIR		=	main.c $(SRCS_BUILTIN) $(SRCS_EXECUTOR) $(SRCS_PARSER) $(SRCS_UTILS) $(SRCS_STRUCT)
+
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NOSRCDIR))
 OBJS = $(SRCS:.c=.o) $(SRCS_BONUS:.c=.o)
 
-all: $(NAME)
+all: subsystem $(NAME)
+
+subsystem:
+	$(MAKE) -C $(LIB_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ -o $(NAME) -lreadline -L${LDFLAGS} -I${CPPFLAGS}
+	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ -lreadline $(LDFLAGS) $(CPPFLAGS) $(LIB_DIR)libft.a -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -I ${CPPFLAGS} -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(CPPFLAGS) -c $< -o $@
 
 clean:
+	$(MAKE) -C $(LIB_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
+	$(MAKE) -C $(LIB_DIR) fclean
 	rm -f $(NAME)
 
 re: 

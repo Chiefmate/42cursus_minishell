@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:32 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:58:35 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static void append_env(t_env *env, char *key, char *value)
+static void	append_env(t_env *env, char *key, char *value)
 {
 	t_env *new;
 
@@ -24,7 +24,7 @@ static void append_env(t_env *env, char *key, char *value)
 	return;
 }
 
-static void change_env(t_env *env, char *key, char *value)
+static void	change_env(t_env *env, char *key, char *value)
 {
 	free(env->value);
 	free(key);
@@ -32,7 +32,7 @@ static void change_env(t_env *env, char *key, char *value)
 	return;
 }
 
-static int export_no_arg(t_env *env_head)
+static int	export_no_arg(t_env *env_head)
 {
 	t_env *tmp;
 	t_env *sorted_env;
@@ -54,7 +54,7 @@ static int export_no_arg(t_env *env_head)
 	return (EXIT_SUCCESS);
 }
 
-void export_key_value(t_env *env_head, char *key_value)
+void	export_key_value(t_env *env_head, char *key_value)
 {
 	t_env *env;
 	char *key;
@@ -70,7 +70,7 @@ void export_key_value(t_env *env_head, char *key_value)
 	return;
 }
 
-int ft_export(int argc, char *argv[], t_env *env_head)
+int	ft_export(int argc, char *argv[], t_env *env_head)
 {
 	int i;
 	int exit_code;

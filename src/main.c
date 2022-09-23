@@ -9,9 +9,9 @@
 /*   Updated: 2022/09/07 16:33:39 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../include/minishell.h"
+#include "minishell.h"
 
-int is_white_space(char *line)
+int	is_white_space(char *line)
 {
 	while (*line)
 	{
@@ -24,7 +24,7 @@ int is_white_space(char *line)
 	return (1);
 }
 
-void main_init(int argc, char *argv[])
+void	main_init(int argc, char *argv[])
 {
 	struct termios term;
 
@@ -42,7 +42,7 @@ void main_init(int argc, char *argv[])
 	(void)argv;
 }
 
-int main(int argc, char *argv[], char *envp[])
+int	main(int argc, char *argv[], char *envp[])
 {
 	char *line;
 	t_cmd *cmd;
@@ -59,7 +59,7 @@ int main(int argc, char *argv[], char *envp[])
 			break;
 		if (*line != '\0')
 			add_history(line);
-		if (*line != '\0' && !is_whitespace(line))
+		if (*line != '\0' && !is_white_space(line))
 		{
 			cmd = ft_list_init();
 

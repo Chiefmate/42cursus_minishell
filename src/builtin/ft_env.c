@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:02 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:58:07 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int ft_env(t_env *cur)
+int	ft_env(t_env *cur)
 {
 	while (cur->key != 0)
 	{
