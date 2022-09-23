@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_exist_file.c                                    :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:53:55 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 19:58:37 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 19:58:44 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "builtin.h"
 
-int	is_exist_file(char *tmp_file_name)
+char *ft_getenv(t_env *env_head, char *key)
 {
-	int fd;
+	t_env *cur;
 
-	fd = open(tmp_file_name, O_RDONLY);
-	close(fd);
-	if (fd == -1)
-		return (0);
-	else
-		return (1);
+	cur = compare_env_key(env_head, key);
+	return (cur->value);
 }

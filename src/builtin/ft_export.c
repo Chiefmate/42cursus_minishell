@@ -1,4 +1,16 @@
-#include "../include/builtin.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:58:32 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 19:58:35 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "builtin.h"
 
 static void append_env(t_env *env, char *key, char *value)
 {

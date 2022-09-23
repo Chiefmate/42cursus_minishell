@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_exist_file.c                                    :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:53:55 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 19:58:02 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 19:58:07 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "builtin.h"
 
-int	is_exist_file(char *tmp_file_name)
+int ft_env(t_env *cur)
 {
-	int fd;
-
-	fd = open(tmp_file_name, O_RDONLY);
-	close(fd);
-	if (fd == -1)
-		return (0);
-	else
-		return (1);
+	while (cur->key != 0)
+	{
+		ft_write(STDOUT_FILENO, cur->key, ft_strlen(cur->key));
+		ft_write(STDOUT_FILENO, "=", 1);
+		ft_write(STDOUT_FILENO, cur->value, ft_strlen(cur->value));
+		ft_write(STDOUT_FILENO, "\n", 1);
+		cur = cur->next;
+	}
+	return (EXIT_SUCCESS);
 }

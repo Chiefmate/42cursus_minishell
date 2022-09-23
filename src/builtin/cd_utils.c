@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_exist_file.c                                    :+:      :+:    :+:   */
+/*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:53:55 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 19:57:40 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 20:22:24 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "builtin.h"
 
-int	is_exist_file(char *tmp_file_name)
+char	*get_pwd_key_value(const char *key)
 {
-	int fd;
+	char *tmp;
+	char *pwd_key_value;
 
-	fd = open(tmp_file_name, O_RDONLY);
-	close(fd);
-	if (fd == -1)
-		return (0);
-	else
-		return (1);
+	tmp = ft_getcwd(NULL, 0);
+	pwd_key_value = ft_strjoin(key, tmp);
+	free(tmp);
+	return (pwd_key_value);
+}
+
+void	export_pwd(const char *pwd, t_env *env_head)
+{
+	char *tmp_pwd;
+
+	tmp_pwd = get_pwd_key_value(pwd);
+	export_key_value(env_head, tmp_pwd);
+	free(tmp_pwd);
 }

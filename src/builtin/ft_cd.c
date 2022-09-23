@@ -1,6 +1,18 @@
-#include "../include/builtin.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:57:43 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 20:24:57 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int cd_tilde(t_env *env_head)
+#include "builtin.h"
+
+static int	cd_tilde(t_env *env_head)
 {
 	int exit_code;
 	char *home;
@@ -25,7 +37,7 @@ static int cd_tilde(t_env *env_head)
 	return (exit_code);
 }
 
-static int cd_tilde_path(char *path, t_env *env_head)
+static int	cd_tilde_path(char *path, t_env *env_head)
 {
 	int exit_code;
 	char *home;
@@ -53,7 +65,7 @@ static int cd_tilde_path(char *path, t_env *env_head)
 	return (exit_code);
 }
 
-static int cd_home(char *path, t_env *env_head)
+static int	cd_home(char *path, t_env *env_head)
 {
 	int exit_code;
 	char *home;
@@ -78,7 +90,7 @@ static int cd_home(char *path, t_env *env_head)
 	return (exit_code);
 }
 
-static int cd_path(char *path, t_env *env_head)
+static int	cd_path(char *path, t_env *env_head)
 {
 	int exit_code;
 	char *tmp_pwd;
@@ -96,7 +108,7 @@ static int cd_path(char *path, t_env *env_head)
 	return (exit_code);
 }
 
-int ft_cd(char *path, t_env *env_head)
+int	ft_cd(char *path, t_env *env_head)
 {
 	if (path == NULL)
 		return (cd_home(path, env_head));

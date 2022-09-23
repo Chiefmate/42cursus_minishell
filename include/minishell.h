@@ -15,10 +15,12 @@
 
 # include <term.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "./struct.h"
 # include "./utils.h"
 # include "./executor.h"
+# include "./builtin.h"
 
 #endif

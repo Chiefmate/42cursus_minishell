@@ -1,6 +1,18 @@
-#include "../include/struct.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 19:57:34 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 19:57:34 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *get_env_key(char *key_value)
+#include "struct.h"
+
+char	*get_env_key(char *key_value)
 {
 	size_t i;
 	size_t len;
@@ -22,7 +34,7 @@ char *get_env_key(char *key_value)
 	return (key);
 }
 
-char *get_env_value(char *key_value)
+char	*get_env_value(char *key_value)
 {
 	size_t i;
 	size_t len;
@@ -45,7 +57,7 @@ char *get_env_value(char *key_value)
 	return (value);
 }
 
-t_env *compare_env_key(t_env *env_head, char *key)
+t_env	*compare_env_key(t_env *env_head, char *key)
 {
 	t_env *cur;
 
@@ -55,7 +67,7 @@ t_env *compare_env_key(t_env *env_head, char *key)
 	return (cur);
 }
 
-t_env *new_env(char *key_value)
+t_env	*new_env(char *key_value)
 {
 	t_env *new;
 
@@ -81,7 +93,7 @@ t_env *new_env(char *key_value)
 	return (new);
 }
 
-int init_env_list(t_env *cur, char *envp)
+int	init_env_list(t_env *cur, char *envp[])
 {
 	size_t i;
 	t_env *new;
