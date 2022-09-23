@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit_with_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:31:03 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:31:03 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:31:36 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/utils.h"
+#include "utils.h"
 
 void	exit_with_err(char *s1, char *s2, int exit_code)
 {

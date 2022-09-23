@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:55 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 18:52:58 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:32:06 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/executor.h"
+#include "executor.h"
 
 static int check_alone_pipe(t_cmd *cmd)
 {
