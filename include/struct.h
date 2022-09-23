@@ -29,4 +29,8 @@ typedef struct s_env
 	struct s_env *prev;
 } t_env;
 
+void *ft_free(void *ptr);
+t_cmd *ft_list_init(void);
+void ft_free_list(t_cmd *cmd);
+
 #endif
