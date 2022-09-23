@@ -50,6 +50,7 @@ extern void		ft_putendl_fd(char *s, int fd);
 extern void		ft_putnbr_fd(int n, int fd);
 extern void		ft_putstr_fd(char *s, int fd);
 extern char		**ft_split(char const *s, char c);
+extern int		ft_strcmp(const char *s1, const char *s2);
 extern char		*ft_strchr(const char *s, int c);
 extern char		*ft_strdup(const char *s);
 extern void		ft_striteri(char *s, void (*f)(unsigned int, char *));

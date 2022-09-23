@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include "../include/utils.h"
 # include "../include/struct.h"
+# include "../libft/libft.h"
 
 /* cd_utils.c */
 char	*get_pwd_key_value(const char *key);

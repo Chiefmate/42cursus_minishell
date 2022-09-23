@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:32:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:32:37 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:59:13 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct	s_env
 	struct s_env *prev;
 }	t_env;
 
-void *ft_free(void *ptr);
-t_cmd *ft_list_init(void);
-void ft_free_list(t_cmd *cmd);
+void	*ft_free(void *ptr);
+t_cmd	*ft_list_init(void);
+void	ft_free_list(t_cmd *cmd);
 
 #endif

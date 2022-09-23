@@ -22,5 +22,9 @@
 # include "./utils.h"
 # include "./executor.h"
 # include "./builtin.h"
+# include "../libft/libft.h"
+
+int		is_white_space(char *line);
+void	main_init(int argc, char *argv[]);
 
 #endif

@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getenv.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 19:58:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/09/23 21:10:20 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 21:58:35 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "./libft.h"
 
-char	*ft_getenv(t_env *env_head, char *key)
+extern int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_env *cur;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	cur = compare_env_key(env_head, key);
-	return (cur->value);
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	while (*p1 && *p2 && *p1 == *p2)
+	{
+		p1++;
+		p2++;
+	}
+	return (*p1 - *p2);
 }
