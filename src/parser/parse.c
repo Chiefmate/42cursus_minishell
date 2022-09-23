@@ -101,7 +101,6 @@ void	parse(char *line, t_cmd *cmd)
 	}
 }
 
-
 /* not to submit */
 void	test_parse(char *line)
 {

@@ -1,6 +1,20 @@
-#include "../include/executor.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   io_file_open.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 00:11:06 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 14:32:48 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void trim_cmd_argv(t_cmd *cmd, const char *set, int size)
+#include "executor.h"
+
+/* infile_open(), outfile_open_trim(), fork_heredoc()에서 호출됨
+ */
+void	trim_cmd_argv(t_cmd *cmd, const char *set, int size)
 {
 	int i;
 	int tmp;
@@ -27,7 +41,7 @@ void trim_cmd_argv(t_cmd *cmd, const char *set, int size)
 	}
 }
 
-static void infile_open(t_cmd *cmd)
+static void	infile_open(t_cmd *cmd)
 {
 	int i;
 	const char redir_in[2] = {-74, '\0'};
@@ -50,7 +64,11 @@ static void infile_open(t_cmd *cmd)
 	return;
 }
 
-static void outfile_open_trim(t_cmd *cmd, int i)
+/* 
+ * 왜??
+ * -76을 배열에 넣는 이유가 무엇인지 확인 필요
+ */
+static void	outfile_open_trim(t_cmd *cmd, int i)
 {
 	int o_flag;
 	const char r_o[2] = {-76, '\0'};
@@ -70,7 +88,11 @@ static void outfile_open_trim(t_cmd *cmd, int i)
 	}
 }
 
-static void outfile_open(t_cmd *cmd)
+/* 
+ * 왜??
+ * -76을 배열에 넣는 이유가 무엇인지 확인 필요
+ */
+static void	outfile_open(t_cmd *cmd)
 {
 	int i;
 	const char r_o[2] = {-76, '\0'};
@@ -90,7 +112,17 @@ static void outfile_open(t_cmd *cmd)
 	}
 }
 
-int io_file_open(t_cmd *cmd, t_env *env_head)
+/* executor()에서 호출되어 cmd에 pipefd[2]와 infile, outfile 대입
+ * 
+ * 외부함수
+ * io_file_open.c(self)
+ * 		infile_open()
+ * 		outfile_open()
+ * path.c
+ * 		get_cmd_path()
+ * ft_pipe()
+ */
+int	io_file_open(t_cmd *cmd, t_env *env_head)
 {
 	ft_pipe(cmd->fd);
 	infile_open(cmd);
@@ -100,4 +132,6 @@ int io_file_open(t_cmd *cmd, t_env *env_head)
 		return (-1);
 	}
 	outfile_open(cmd);
+	cmd->cmd_path = get_cmd_path(cmd, env_head);
+	return (0);
 }

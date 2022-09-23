@@ -1,4 +1,16 @@
-#include "../include/executor.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_valid_syntax.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 00:10:55 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/09/23 14:32:06 by hyunhole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "executor.h"
 
 static int check_alone_pipe(t_cmd *cmd)
 {
@@ -11,6 +23,8 @@ static int check_alone_pipe(t_cmd *cmd)
   return (0);
 }
 
+/* print_err()
+ */
 static int check_redirection_file(t_cmd *cmd, int i, int ret)
 {
   const char oc[2] = {-76, '\0'};
@@ -39,6 +53,8 @@ static int check_redirection_file(t_cmd *cmd, int i, int ret)
   return (0);
 }
 
+/* print_err2()
+ */
 static int check_empty_cmd(t_cmd *cmd)
 {
   if (cmd->is_dollar == false && cmd->argc == 1 && //달러
@@ -51,7 +67,13 @@ static int check_empty_cmd(t_cmd *cmd)
   return (0);
 }
 
-int check_valid_synax(t_cmd *cmd_head)
+/* executor()에서 호출되어 cmd가 valid syntax인지 확인
+ * return
+ *		0	if valid
+ *		-1	otherwise
+ * 안에서 호출되는 모든 함수 check_valid_syntax.c에 포함됨
+ */
+int check_valid_syntax(t_cmd *cmd_head)
 {
   t_cmd *cur;
 
