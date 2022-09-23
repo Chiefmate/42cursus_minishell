@@ -30,4 +30,8 @@ int		ft_open(char *fname, int oflag, int mode);
 
 void	print_err(char *str);
 
+/* signal.c */
+void	signal_handler(int signo);
+void	set_signal(int sig_int, int sig_quit);
+
 #endif
