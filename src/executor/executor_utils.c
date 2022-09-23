@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   executor_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:19:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 00:19:37 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:32:20 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/executor.h"
+#include "executor.h"
 
 /* 해당 커맨드가 fork한 뒤 실행되어야하는지 판단
  *

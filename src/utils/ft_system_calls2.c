@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_system_calls2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:38 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:36:38 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:31:46 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/utils.h"
+#include "utils.h"
 
 int	ft_write(int fd, const void *buf, size_t byte)
 {

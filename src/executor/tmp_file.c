@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:08 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 14:49:40 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:33:03 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/executor.h"
+#include "executor.h"
 
 static int	get_tmp_file_num(void)
 {

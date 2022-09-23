@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_clear_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:03 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 18:48:34 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:32:42 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // DONE
 
-#include "../include/executor.h"
+#include "executor.h"
 
 /* executor()에서 호출되어 heredoc()을 호출함
  * return

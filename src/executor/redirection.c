@@ -12,7 +12,7 @@
 
 // DONE
 
-#include "../include/executor.h"
+#include "executor.h"
 
 static void	redirect_pipe_in(t_cmd *cmd)
 {

@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 18:52:38 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:47:16 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTOR_H
 # define EXECUTOR_H
 
-<<<<<<< HEAD
-# include "./struct.h"
-# include "./utils.h"
-=======
 # define READ 0
 # define WRITE 1
 
->>>>>>> c8111469d2adf0c24b99c39a7123ef8e27180cc6
 # include <sys/types.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -29,8 +24,8 @@
 # include <stdlib.h>
 // # include <readline/readline.h>
 
-# include "./struct.h"
-# include "./utiles.h"
+# include "struct.h"
+# include "utils.h"
 
 /* executor.c */
 void	executor(t_cmd *cmd_head, t_env *env_head);

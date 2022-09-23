@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 18:35:59 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:32:36 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// DONE
-
-#include "../include/executor.h"
+#include "executor.h"
 
 static int check_heredoc(t_cmd *cmd)
 {

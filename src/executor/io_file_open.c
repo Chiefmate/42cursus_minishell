@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   io_file_open.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/21 18:46:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:32:48 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/executor.h"
+#include "executor.h"
 
 /* infile_open(), outfile_open_trim(), fork_heredoc()에서 호출됨
  */

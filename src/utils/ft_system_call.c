@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_system_call.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:36:58 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:31:41 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/utils.h"
+#include "utils.h"
 
 int	ft_open(char *fname, int oflag, int mode)
 {
