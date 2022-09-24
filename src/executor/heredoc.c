@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:32:36 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:56:44 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int check_heredoc(t_cmd *cmd)
 {
 	int idx;
-	const char redir_h[3] = {-74, -74, "\0"};
+	const char redir_h[3] = {-74, -74, '\0'};
 
 	idx = -1;
 	while (cmd->argv[++idx])

@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:32:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:59:13 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:59:31 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	g_exit_code;
 
 typedef struct s_cmd
 {
-	char			**argv;
 	int				argc;
+	char			**argv;
 	bool			is_pipe;
 	bool			is_dollar;
 	int				fd[2];	 // pipe

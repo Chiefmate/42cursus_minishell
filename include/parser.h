@@ -16,20 +16,6 @@
 # include <stdbool.h>
 # include "struct.h"
 
-typedef struct s_cmd
-{
-	char			**argv;
-	int				argc;
-	bool			is_pipe;
-	bool			is_dollar;
-	int				fd[2];
-	int				infile;
-	int				outfile;
-	char			*cmd_path;
-	struct s_cmd	*prev;
-	struct s_cmd	*next;
-}				t_cmd;
-
 /* replace.c */
 void	replace(t_cmd *cmd, t_env *head);
 

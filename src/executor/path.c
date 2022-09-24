@@ -60,7 +60,7 @@ static int	check_relative(char *str)
 
 	i = 0;
 	ret = 0;
-	while (!ft_alnum(str[i]))
+	while (!ft_isalnum(str[i]))
 	{
 		if (str[i] == '.' || str[i] =='/')
 			ret = 1;
