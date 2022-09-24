@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "struct.h"
+#include "builtin.h"
 
 char	*get_env_key(char *key_value)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:55 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:32:06 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:01:50 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int check_redirection_file(t_cmd *cmd, int i, int ret)
   while (i < cmd->argc)
   {
     if (!ft_strcmp(cmd->argv[i], oc) || !ft_strcmp(cmd->argv[i], oa))
-      if (cmd->argv[i + 1] == NULL || ft_strlen(cmd->argv[i + 1] == 0))
+      if (cmd->argv[i + 1] == NULL || ft_strlen(cmd->argv[i + 1]) == 0)
         ret = -1;
     if (!ft_strcmp(cmd->argv[i], ic) || !ft_strcmp(cmd->argv[i], ia))
       if (cmd->argv[i + 1] == NULL || ft_strlen(cmd->argv[i + 1]) == 0)

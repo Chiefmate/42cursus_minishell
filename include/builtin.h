@@ -2,8 +2,8 @@
 # define BUILTIN_H
 
 # include <stdlib.h>
-# include "../include/utils.h"
-# include "../include/struct.h"
+# include "utils.h"
+# include "struct.h"
 # include "../libft/libft.h"
 
 /* cd_utils.c */

@@ -29,6 +29,7 @@ extern int		ft_isalpha(int c);
 extern int		ft_isascii(int c);
 extern int		ft_isdigit(int c);
 extern int		ft_isprint(int c);
+extern int		ft_isspace(int c);
 extern char		*ft_itoa(int n);
 extern void		ft_lstadd_back(t_list **lst, t_list *new);
 extern void		ft_lstadd_front(t_list **lst, t_list *new);
