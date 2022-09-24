@@ -18,10 +18,11 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "./struct.h"
-# include "./utils.h"
-# include "./executor.h"
-# include "./builtin.h"
+# include "struct.h"
+# include "utils.h"
+# include "executor.h"
+# include "builtin.h"
+# include "parser.h"
 # include "../libft/libft.h"
 
 int		is_white_space(char *line);

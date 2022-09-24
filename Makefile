@@ -31,7 +31,7 @@ SRCS_BUILTIN		=	$(addprefix builtin/, cd_utils.c ft_cd.c ft_env.c \
 SRCS_EXECUTOR		=	$(addprefix executor/, check_valid_syntax.c close_unused_fd.c \
 						executor.c executor_utils.c heredoc.c init_clear_cmd.c io_file_open.c \
 						path.c redirection.c tmp_file.c wait_child.c)
-SRCS_PARSER			=	$(addprefix parser/, ft_split_argc.c ft_strjoin_char.c parse.c \
+SRCS_PARSER			=	$(addprefix parser/, argc_checker.c ft_split_argc.c ft_strjoin_char.c parse.c \
 						parse_quotes.c replace.c replace_utils.c)
 SRCS_UTILS			=	$(addprefix utils/, exit_with_error.c ft_system_call.c ft_system_call2.c is_exist_file.c signal.c)
 SRCS_STRUCT			=	$(addprefix struct/, cmd.c)
