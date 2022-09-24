@@ -14,7 +14,12 @@
 # define PARSER_H
 
 # include <stdbool.h>
+# include <stdio.h>
+
+# include "../libft/libft.h"
 # include "struct.h"
+# include "utils.h"
+# include "builtin.h"
 
 /* replace.c */
 void	replace(t_cmd *cmd, t_env *head);

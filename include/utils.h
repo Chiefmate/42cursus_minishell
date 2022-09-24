@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:32:30 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:01:12 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 15:46:16 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
 # include "../libft/libft.h"
 
 /* DFL(Default signal handler) IGN (Ignore) */
