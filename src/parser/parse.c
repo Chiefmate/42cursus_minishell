@@ -42,7 +42,7 @@ static char	*parse_in_pipe(char *str, int *pipe, t_cmd **cmd, t_cmd *next)
 {
 	if (*pipe == 1)
 		exit_with_err("argv error", "||", 1);
-	(*cmd)->is_pipe = ture;
+	(*cmd)->is_pipe = true;
 	(*cmd)->argv = ft_split_argc(str, ' ', &((*cmd)->argc));
 	next = ft_list_init();
 	(*cmd)->next = next;
@@ -53,7 +53,7 @@ static char	*parse_in_pipe(char *str, int *pipe, t_cmd **cmd, t_cmd *next)
 	return (str);
 }
 
-static char	*parse_out_pipe()
+static char	*parse_out_pipe(char *str, char *line, int quotes, int *pipe)
 {
 	if ((*line == ';' || *line == '\\') && quotes == 0)
 		exit_with_err("symbol error", line, 1);

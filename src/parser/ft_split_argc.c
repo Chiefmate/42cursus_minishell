@@ -66,7 +66,7 @@ static char	**get_words_dup(char const *s, char c, char **mem)
 			word_len++;
 		mem[i] = (char *)malloc(sizeof(char) * (word_len + 1));
 		if (!mem[i])
-			return (is_free(mem, i));
+			return (free_so_far_done(mem, i));
 		ft_strlcpy(mem[i], s, word_len + 1);
 		s = s + word_len;
 		i++;
