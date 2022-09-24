@@ -101,3 +101,4 @@ void	parse(char *line, t_cmd *cmd)
 		str = ft_free(str);
 	}
 }
+
