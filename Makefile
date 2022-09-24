@@ -50,7 +50,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ -lreadline $(LDFLAGS) $(CPPFLAGS) $(LIB_DIR)libft.a -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCS_DIR) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIB_DIR) clean

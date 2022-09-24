@@ -75,10 +75,10 @@ static char	*replace_loop(t_cmd *cmd, t_env *head, int arg_cnt)
 	dollar = 0;
 	quotes = 0;
 	ret = NULL;
-	while (i <= (int)ft_strlen(cmd->argv[arg_cnt])
+	while (i <= (int)ft_strlen(cmd->argv[arg_cnt]))
 	{
-		quotes = parse_set_quotes(cmd->argv[arg_cnt][i], quotes, cmd);
-		if (cmd->argv[arg_cnt][j] == '$' && quotes != 1 && dollar == 0)
+		quotes = parse_quotes(cmd->argv[arg_cnt][i], quotes, cmd);
+		if (cmd->argv[arg_cnt][i] == '$' && quotes != 1 && dollar == 0)
 			dollar = 1;
 		else if (dollar == 1)
 		{
