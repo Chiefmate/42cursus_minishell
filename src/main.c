@@ -28,11 +28,8 @@ void	main_init(int argc, char *argv[])
 {
 	struct termios term;
 
-	/*/
-		if (argc != 1)
-			exit_with_err("argument input error", NULL, 126);
-			나중에
-	/*/
+	if (argc != 1)
+		exit_with_err("argument input error", NULL, 126);
 	tcgetattr(STDIN_FILENO, &term);
 	term.c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
@@ -44,10 +41,10 @@ void	main_init(int argc, char *argv[])
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char *line;
-	t_cmd *cmd;
-	t_env env_head;
-	struct termios term;
+	char			*line;
+	t_cmd			*cmd;
+	t_env			env_head;
+	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(argc, argv);
@@ -62,10 +59,14 @@ int	main(int argc, char *argv[], char *envp[])
 		if (*line != '\0' && !is_white_space(line))
 		{
 			cmd = ft_list_init();
-
+			parse(line, cmd);
+			replace(cmd, &env_head);
+			argc_checker(&cmd);
 			executor(cmd, &env_head);
+			ft_free_list(cmd);
 		}
+		free(line);
 	}
-
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	return (0);
 }
