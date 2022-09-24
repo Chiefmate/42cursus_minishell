@@ -6,15 +6,40 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:02:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:37:12 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-static char	**get_envp(t_env *head)
+static char	**get_env_arr(t_env *head)
 {
-	
+	int		i;
+	int		size;
+	char	*key;
+	t_env	*tmp;
+	char	**ret;
+
+	i = 0;
+	size = 0;
+	tmp = head;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	ret = malloc(sizeof(char *) * size);
+	tmp = head;
+	while (i < size - 1)
+	{
+		key = ft_strjoin(tmp->key, "=");
+		ret[i] = ft_strjoin(key, tmp->value);
+		i++;
+		tmp = tmp->next;
+		free(key);
+	}
+	ret[i] = NULL;
+	return (ret);
 }
 
 /* execute_cmd()의 내부 함수
@@ -22,7 +47,28 @@ static char	**get_envp(t_env *head)
  */
 static int	os_builtins(t_cmd *cmd, t_env *env_head)
 {
+	char	*env_path;
+	char	**env_arr;
 
+	env_path = ft_getenv(env_head, "PATH");
+	if (env_path == NULL && cmd->cmd_path == NULL)
+	{
+		print_err3(cmd->argv[0], NULL, "No such file or directory");
+		return (127);
+	}
+	if (env_path != NULL && ft_strlen(env_path) == 0 && cmd->cmd_path == NULL)
+	{
+		print_err3(cmd->argv[0], NULL, "No such file or directory");
+		return (127);
+	}
+	if (cmd->cmd_path == NULL)
+	{
+		print_err3(cmd->argv[0], NULL, "command not found");
+		return (127);
+	}
+	env_arr = get_env_arr(env_head);
+	ft_execve(cmd->cmd_path, cmd->argv, env_arr);
+	return (EXIT_FAILURE);
 }
 
 /* do_fork_cmd()와 do_cmd()의 내부 함수
@@ -35,23 +81,21 @@ static int	os_builtins(t_cmd *cmd, t_env *env_head)
 static int	execute_cmd(t_cmd *cmd, t_env *env_head)
 {
 	restore_redirection_char(cmd);
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
 	if (!ft_strcmp(cmd->argv[0], "cd"))
-		return (ft_cd(cmd->argc, cmd->argv));
+		return (ft_cd(cmd->argv[1], env_head));
 	if (!ft_strcmp(cmd->argv[0], "echo"))
 		return (ft_echo(cmd->argc, cmd->argv));
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
-
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
-	if (!ft_strcmp(cmd->argv[0], "echo"))
-		return (ft_echo(cmd->argc, cmd->argv));
+	if (!ft_strcmp(cmd->argv[0], "env"))
+		return (ft_env(env_head));
+	if (!ft_strcmp(cmd->argv[0], "exit"))
+		return (ft_exit(cmd));
+	if (!ft_strcmp(cmd->argv[0], "export"))
+		return (ft_export(cmd->argc, cmd->argv, env_head));
+	if (!ft_strcmp(cmd->argv[0], "pwd"))
+		return (ft_pwd());
+	if (!ft_strcmp(cmd->argv[0], "unset"))
+		return (ft_unset(cmd->argc, cmd->argv, env_head));
+	return (os_builtins(cmd, env_head));
 }
 
 /* executor()의 내부 함수 
