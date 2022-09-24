@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:00:50 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:57:20 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 
+# include "../libft/libft.h"
 # include "struct.h"
 # include "utils.h"
+# include "builtin.h"
 
 /* executor.c */
 void	executor(t_cmd *cmd_head, t_env *env_head);
