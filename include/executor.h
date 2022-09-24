@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:47:16 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:00:50 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-// # include <readline/readline.h>
+# include <readline/readline.h>
 
 # include "struct.h"
 # include "utils.h"
