@@ -21,6 +21,9 @@
 # include "utils.h"
 # include "builtin.h"
 
+/* argc_checker.c */
+void	argc_checker(t_cmd **cmd);
+
 /* replace.c */
 void	replace(t_cmd *cmd, t_env *head);
 
