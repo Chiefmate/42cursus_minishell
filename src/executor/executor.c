@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 16:22:46 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:44:54 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,20 @@ static int	os_builtins(t_cmd *cmd, t_env *env_head)
 static int	execute_cmd(t_cmd *cmd, t_env *env_head)
 {
 	restore_redirection_char(cmd);
-	if (!ft_strcmp(cmd->argv[0], "cd"))
-		return (ft_cd(cmd->argv[1], env_head));
 	if (!ft_strcmp(cmd->argv[0], "echo"))
 		return (ft_echo(cmd->argc, cmd->argv));
+	if (!ft_strcmp(cmd->argv[0], "cd"))
+		return (ft_cd(cmd->argv[1], env_head));
+	if (!ft_strcmp(cmd->argv[0], "pwd"))
+		return (ft_pwd());
+	if (!ft_strcmp(cmd->argv[0], "export"))
+		return (ft_export(cmd->argc, cmd->argv, env_head));
+	if (!ft_strcmp(cmd->argv[0], "unset"))
+		return (ft_unset(cmd->argc, cmd->argv, env_head));
 	if (!ft_strcmp(cmd->argv[0], "env"))
 		return (ft_env(env_head));
 	if (!ft_strcmp(cmd->argv[0], "exit"))
 		return (ft_exit(cmd));
-	if (!ft_strcmp(cmd->argv[0], "export"))
-		return (ft_export(cmd->argc, cmd->argv, env_head));
-	if (!ft_strcmp(cmd->argv[0], "pwd"))
-		return (ft_pwd());
-	if (!ft_strcmp(cmd->argv[0], "unset"))
-		return (ft_unset(cmd->argc, cmd->argv, env_head));
 	return (os_builtins(cmd, env_head));
 }
 
@@ -114,6 +114,7 @@ static void	do_fork_cmd(t_cmd *cmd, t_env *env_head)
 	pid_t	pid;
 	int		exit_code;
 
+	printf("entered fork\n");
 	set_signal(DFL, DFL);
 	pid = ft_fork();
 	/* 자식 프로세스 */
@@ -138,6 +139,7 @@ static void	do_fork_cmd(t_cmd *cmd, t_env *env_head)
 */
 static void	do_cmd(t_cmd *cmd, t_env *env_head)
 {
+	printf("no fork\n");
 	g_exit_code = execute_cmd(cmd, env_head);
 	close_unused_fd(cmd, 1);
 }
@@ -165,6 +167,8 @@ void	executor(t_cmd *cmd_head, t_env *env_head)
 {
 	t_cmd *cmd_cur;
 
+	char	dbg_buf[50] = {0, };
+
 	cmd_cur = cmd_head;
 	if (check_valid_syntax(cmd_head) == -1)
 		return (clear_cmd(cmd_head));
@@ -177,13 +181,19 @@ void	executor(t_cmd *cmd_head, t_env *env_head)
 			cmd_cur = cmd_cur->next;
 			continue ;
 		}
+		
+		//dbg
+		getcwd(dbg_buf, 49);
+		printf("exec curr dir is %s\n", dbg_buf);
+
 		/* 파이프있는 경우는 fork, builtin은 fork X 
 		 * env도 반드시 전달해야 함
 		*/
-		if (is_need_fork(cmd_cur) == true)
+		if (is_need_fork(cmd_cur))
 			do_fork_cmd(cmd_cur, env_head);
 		else
 			do_cmd(cmd_cur, env_head);
+
 		cmd_cur = cmd_cur->next;
 	}
 	wait_child();

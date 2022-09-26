@@ -2,6 +2,7 @@
 # define BUILTIN_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "utils.h"
 # include "struct.h"
 # include "../libft/libft.h"
