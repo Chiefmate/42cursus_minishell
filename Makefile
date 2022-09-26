@@ -13,7 +13,7 @@
 NAME				=	minishell
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-g3 -Wall -Wextra -Werror
 AR					=	ar
 ARFLAGS				=	crs
 RM					=	rm -f

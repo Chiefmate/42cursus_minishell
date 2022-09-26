@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:57:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:24:57 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:37:57 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,20 @@ static int	cd_tilde_path(char *path, t_env *env_head)
 
 static int	cd_home(char *path, t_env *env_head)
 {
-	int exit_code;
-	char *home;
-	char *tmp_pwd;
+	int		exit_code;
+	char	*home;
+	char	*tmp_pwd;
+
+	char	dbg_buf[50] = {0, };
 
 	exit_code = EXIT_FAILURE;
 	home = ft_getenv(env_head, "HOME");
+	
+	//dbg
+	printf("home is %s\n", home);
+	getcwd(dbg_buf, 49);
+	printf("curr dir is %s\n", dbg_buf);
+
 	if (home == NULL)
 		print_err2("cd", "home not set");
 	else
@@ -84,6 +92,11 @@ static int	cd_home(char *path, t_env *env_head)
 		else
 			export_key_value(env_head, tmp_pwd);
 		free(tmp_pwd);
+
+		// dbg
+		getcwd(dbg_buf, 49);
+		printf("changed dir is %s\n", dbg_buf);
+		printf("exit_code is %d\n", exit_code);
 	}
 	if (exit_code != -1)
 		export_pwd("PWD=", env_head);
@@ -110,6 +123,9 @@ static int	cd_path(char *path, t_env *env_head)
 
 int	ft_cd(char *path, t_env *env_head)
 {
+	//debug
+	printf("entered cd with path: %s\n", path);
+
 	if (path == NULL)
 		return (cd_home(path, env_head));
 	else if (!ft_strcmp("~", path))
