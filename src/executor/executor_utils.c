@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:19:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/26 20:46:38 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:55:27 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	is_need_fork(t_cmd *cmd)
 	return (1);
 }
 
-/* execute_cmd()의 내부 함수
+/* called by execute_cmd()
  *
  * -74, -76로 바꾸었다가 실행 전 돌리는 이유 확인필요
  */
