@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:57:54 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:25:08 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:26:08 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int	is_option_n(char *str)
+static int is_option_n(char *str)
 {
 	if (str == NULL)
 		return (0);
@@ -26,35 +26,33 @@ static int	is_option_n(char *str)
 	return (1);
 }
 
-static int	check_option_n(int argc, char *argv[], int *idx)
+static int check_option_n(int argc, char *argv[], int *idx)
 {
 	int i;
 	int option_n;
 
 	i = 1;
 	option_n = 0;
-	if (argc == 1) //인자의 개수가 1이면 0을 리턴
+	if (argc == 1)
 		return (0);
-	option_n = is_option_n(argv[i]); // option_n이 n이 들어가있는지 확인시켜줌, 맞으면 1 리턴, 틀리면 0
-	// argv[1] 을 확인한다는건데
-	//  0 -> echo
-	//  [1] : -n
+	option_n = is_option_n(argv[i]);
+
 	while (i < argc && is_option_n(argv[i]))
 		++i;
-	*idx = i; // i < argc, 하고 idx을 넣어준다. 왜지 ?
+	*idx = i;
 	return (option_n);
 }
 
-int	ft_echo(int argc, char *argv[])
+int ft_echo(int argc, char *argv[])
 {
 	int idx;
 	int option_n;
 
 	idx = 1;
-	option_n = check_option_n(argc, argv, &idx); //인덱스값이 idx에 들어가있고 , -n이 있으면 1 없으면0
+	option_n = check_option_n(argc, argv, &idx);
 	while (idx < argc && argv[idx])
 	{
-		ft_write(STDOUT_FILENO, argv[idx], ft_strlen(argv[idx])); //정확한 [idx] 의 의미를 모르겠음
+		ft_write(STDOUT_FILENO, argv[idx], ft_strlen(argv[idx]));
 		if (idx + 1 != argc)
 			ft_write(STDOUT_FILENO, " ", 1);
 		++idx;
@@ -63,5 +61,3 @@ int	ft_echo(int argc, char *argv[])
 		ft_write(STDOUT_FILENO, "\n", 1);
 	return (EXIT_SUCCESS);
 }
-
-// STDOUT_FILENO->fd 값 : 1 argv[idx]->그 행을 프린트한다.
