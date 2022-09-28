@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:10 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:19:41 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int	is_all_number(char *str)
+static int is_all_number(char *str)
 {
 	while (*str)
 	{
@@ -23,21 +23,21 @@ static int	is_all_number(char *str)
 	return (1);
 }
 
-static void	exit_no_arg(t_cmd *cmd)
+static void exit_no_arg(t_cmd *cmd)
 {
 	int exit_code;
 
-	exit_code = EXIT_SUCCESS;
+	exit_code = 0;
 	if (cmd->prev == NULL)
 		ft_write(STDOUT_FILENO, "exit\n", 5);
 	exit(exit_code);
 }
 
-static void	exit_two_arg(t_cmd *cmd)
+static void exit_two_arg(t_cmd *cmd)
 {
 	int exit_code;
 
-	exit_code = EXIT_SUCCESS;
+	exit_code = 0;
 	if (cmd->prev == NULL)
 		ft_write(STDOUT_FILENO, "exit\n", 5);
 	if (!is_all_number(cmd->argv[1]))
@@ -50,11 +50,11 @@ static void	exit_two_arg(t_cmd *cmd)
 	exit(exit_code);
 }
 
-int	ft_exit(t_cmd *cmd)
+int ft_exit(t_cmd *cmd)
 {
 	int exit_code;
 
-	exit_code = EXIT_SUCCESS;
+	exit_code = 0;
 	if (cmd->argc == 1)
 		exit_no_arg(cmd);
 	if (cmd->argc == 2)

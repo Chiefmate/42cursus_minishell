@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:55 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:30:53 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:29:01 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static void	remove_env(t_env *env)
+static void remove_env(t_env *env)
 {
 	t_env *next;
 	t_env *prev;
@@ -26,7 +26,7 @@ static void	remove_env(t_env *env)
 	free(env);
 }
 
-static int	check_valid_key_identifier(int argc, char *argv[])
+static int check_valid_key_identifier(int argc, char *argv[])
 {
 	int i;
 	int ret;
@@ -44,7 +44,7 @@ static int	check_valid_key_identifier(int argc, char *argv[])
 			ret = -1;
 		else if (is_have_space(argv[i], '\0'))
 			ret = -1;
-		else if (is_all_digit(argv[i], '\0'))
+		else if (is_starting_with_digit(argv[i]))
 			ret = -1;
 		if (ret == -1)
 		{
@@ -55,7 +55,7 @@ static int	check_valid_key_identifier(int argc, char *argv[])
 	return (0);
 }
 
-static void	unset(t_env *env_head, char *key)
+static void unset(t_env *env_head, char *key)
 {
 	t_env *env;
 
@@ -66,19 +66,19 @@ static void	unset(t_env *env_head, char *key)
 		remove_env(env);
 }
 
-int	ft_unset(int argc, char *argv[], t_env *env_head)
+int ft_unset(int argc, char *argv[], t_env *env_head)
 {
 	int i;
 
 	if (argc < 2)
-		return (EXIT_SUCCESS);
+		return (0);
 	if (check_valid_key_identifier(argc, argv) == -1)
-		return (EXIT_FAILURE);
+		return (1);
 	i = 1;
 	while (i < argc)
 	{
 		unset(env_head, argv[i]);
 		++i;
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }

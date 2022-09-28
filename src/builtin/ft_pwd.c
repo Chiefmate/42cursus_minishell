@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:47 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 16:05:16 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:20:04 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	ft_pwd(void)
+int ft_pwd(void)
 {
 	char *pwd;
 
@@ -20,5 +20,5 @@ int	ft_pwd(void)
 	ft_write(STDOUT_FILENO, pwd, ft_strlen(pwd));
 	ft_write(STDOUT_FILENO, "\n", 1);
 	free(pwd);
-	return (EXIT_SUCCESS);
+	return (0);
 }

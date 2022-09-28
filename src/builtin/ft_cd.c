@@ -6,7 +6,7 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:57:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/27 17:25:22 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 13:37:31 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int cd_tilde(t_env *env_head)
 	char *home;
 	char *tmp_pwd;
 
-	exit_code = EXIT_FAILURE;
+	exit_code = 1;
 	home = getenv("HOME");
 	if (home == NULL)
 		print_err2("cd", "home not set");
@@ -44,7 +44,7 @@ static int cd_tilde_path(char *path, t_env *env_head)
 	char *tmp_pwd;
 	char *home_path;
 
-	exit_code = EXIT_FAILURE;
+	exit_code = 1;
 	home = getenv("HOME");
 	if (home == NULL)
 		print_err2("cd", "home not set");
@@ -71,9 +71,8 @@ static int cd_home(char *path, t_env *env_head)
 	char *home;
 	char *tmp_pwd;
 
-	exit_code = EXIT_FAILURE;
+	exit_code = 1;
 	home = ft_getenv(env_head, "HOME");
-
 	if (home == NULL)
 		print_err2("cd", "home not set");
 	else
@@ -96,7 +95,7 @@ static int cd_path(char *path, t_env *env_head)
 	int exit_code;
 	char *tmp_pwd;
 
-	exit_code = EXIT_FAILURE;
+	exit_code = 1;
 	tmp_pwd = get_pwd_key_value("OLDPWD=");
 	exit_code = chdir(path);
 	if (exit_code == -1)

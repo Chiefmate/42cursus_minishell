@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:56:44 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:20:32 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ static int check_heredoc(t_cmd *cmd)
  * readline()
  * ft_write()
  */
-static void	input_heredoc(t_cmd *cmd, int lim_idx)
+static void input_heredoc(t_cmd *cmd, int lim_idx)
 {
-	char	*line;
-	char	*limiter;
+	char *line;
+	char *limiter;
 
 	limiter = cmd->argv[lim_idx];
 	while (1)
 	{
 		line = readline("> ");
 		if (!line)
-			break ;
+			break;
 		else if (!ft_strcmp(line, limiter))
 		{
 			free(line);
-			break ;
+			break;
 		}
 		ft_write(cmd->infile, line, ft_strlen(line));
 		ft_write(cmd->infile, "\n", 1);
@@ -56,7 +56,7 @@ static void	input_heredoc(t_cmd *cmd, int lim_idx)
 	}
 }
 
-static int	wait_heredoc(pid_t pid)
+static int wait_heredoc(pid_t pid)
 {
 	int status;
 	int signo;
@@ -66,12 +66,12 @@ static int	wait_heredoc(pid_t pid)
 	{
 		signo = WTERMSIG(status);
 		if (signo == SIGINT)
-			return (EXIT_FAILURE);
+			return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
-static int	fork_heredoc(t_cmd *cmd, int lim_idx)
+static int fork_heredoc(t_cmd *cmd, int lim_idx)
 {
 	pid_t pid;
 	int ret;
@@ -83,7 +83,7 @@ static int	fork_heredoc(t_cmd *cmd, int lim_idx)
 	{
 		input_heredoc(cmd, lim_idx + 1);
 		cmd->infile = ft_close(cmd->infile);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 	else
 	{
@@ -107,7 +107,7 @@ static int	fork_heredoc(t_cmd *cmd, int lim_idx)
  * ft_open()
  * ft_close()
  */
-int	heredoc(t_cmd *cmd_head)
+int heredoc(t_cmd *cmd_head)
 {
 	char *tmp_file;
 	int idx;
@@ -125,7 +125,7 @@ int	heredoc(t_cmd *cmd_head)
 		tmp_file = get_tmp_file_name();
 		exit_code = fork_heredoc(cur, idx);
 		g_exit_code = exit_code;
-		if (exit_code == EXIT_SUCCESS)
+		if (exit_code == 0)
 			cur->infile = ft_open(tmp_file, O_RDONLY, 0664);
 		free(tmp_file);
 		if (exit_code == EXIT_FAILURE)

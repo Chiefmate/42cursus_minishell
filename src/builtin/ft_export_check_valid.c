@@ -3,29 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_check_valid.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:18 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:27:53 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:26:32 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	is_all_digit(char *key_value, char set)
+int is_starting_with_digit(char *key_value)
 {
-	while (*key_value && *key_value != set)
-	{
-		if (!ft_isdigit(*key_value))
-			break;
-		++key_value;
-	}
-	if (*key_value == set)
+	if (ft_isdigit(*key_value) || *key_value != '_')
 		return (1);
 	return (0);
 }
 
-int	is_have_space(char *key_value, char set)
+int is_have_space(char *key_value, char set)
 {
 	while (*key_value && *key_value != set)
 	{
@@ -38,7 +32,7 @@ int	is_have_space(char *key_value, char set)
 	return (1);
 }
 
-int	is_have_specific_char(char *key_value, char c)
+int is_have_specific_char(char *key_value, char c)
 {
 	while (*key_value)
 	{
@@ -51,7 +45,7 @@ int	is_have_specific_char(char *key_value, char c)
 	return (1);
 }
 
-int	check_valid_identifier(int argc, char *argv[])
+int check_valid_identifier(int argc, char *argv[])
 {
 	int i;
 
@@ -68,7 +62,7 @@ int	check_valid_identifier(int argc, char *argv[])
 			print_quote_err3("export", argv[i], "not a valid identifier");
 			return (-1);
 		}
-		if (is_all_digit(argv[i], '='))
+		if (is_starting_with_digit(argv[i]))
 		{
 			print_quote_err3("export", argv[i], "not a valid identifier");
 			return (-1);

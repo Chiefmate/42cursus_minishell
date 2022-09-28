@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:02 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:58:51 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:18:52 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	ft_env(t_env *cur)
+int ft_env(t_env *cur)
 {
 	while (cur->key != 0)
 	{
@@ -22,5 +22,5 @@ int	ft_env(t_env *cur)
 		ft_write(STDOUT_FILENO, "\n", 1);
 		cur = cur->next;
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }

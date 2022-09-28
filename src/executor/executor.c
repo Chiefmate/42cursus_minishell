@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/26 20:55:04 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:20:58 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-static char	**get_env_arr(t_env *head)
+static char **get_env_arr(t_env *head)
 {
-	int		i;
-	int		size;
-	char	*key;
-	t_env	*tmp;
-	char	**ret;
+	int i;
+	int size;
+	char *key;
+	t_env *tmp;
+	char **ret;
 
 	i = 0;
 	size = 0;
@@ -45,10 +45,10 @@ static char	**get_env_arr(t_env *head)
 /* called by execute_cmd()
  * executes external functions, which are not builtin
  */
-static int	execute_external(t_cmd *cmd, t_env *env_head)
+static int execute_external(t_cmd *cmd, t_env *env_head)
 {
-	char	*env_path;
-	char	**env_arr;
+	char *env_path;
+	char **env_arr;
 
 	env_path = ft_getenv(env_head, "PATH");
 	if (env_path == NULL && cmd->cmd_path == NULL)
@@ -68,17 +68,17 @@ static int	execute_external(t_cmd *cmd, t_env *env_head)
 	}
 	env_arr = get_env_arr(env_head);
 	ft_execve(cmd->cmd_path, cmd->argv, env_arr);
-	return (EXIT_FAILURE);
+	return (1);
 }
 
 /* called by do_fork_cmd() and do_cmd()
  * executes builtin
  * if not builtin func, executes execute_external()
- * 
+ *
  * executor_utils.c
  * 		restore_redirection_char()
  */
-static int	execute_cmd(t_cmd *cmd, t_env *env_head)
+static int execute_cmd(t_cmd *cmd, t_env *env_head)
 {
 	restore_redirection_char(cmd);
 	if (!ft_strcmp(cmd->argv[0], "echo"))
@@ -110,10 +110,10 @@ static int	execute_cmd(t_cmd *cmd, t_env *env_head)
  * close_unused_fd.c
  * 		close_unused_fd()
  */
-static void	do_fork_cmd(t_cmd *cmd, t_env *env_head)
+static void do_fork_cmd(t_cmd *cmd, t_env *env_head)
 {
-	pid_t	pid;
-	int		exit_code;
+	pid_t pid;
+	int exit_code;
 
 	printf("entered fork\n");
 	set_signal(DFL, DFL);
@@ -123,20 +123,20 @@ static void	do_fork_cmd(t_cmd *cmd, t_env *env_head)
 		redirect(cmd);
 		close_unused_fd(cmd, pid);
 		exit_code = execute_cmd(cmd, env_head);
-		exit (exit_code);
+		exit(exit_code);
 	}
 	else
 	{
 		close_unused_fd(cmd, pid);
 		set_signal(IGN, IGN);
 	}
-	return ;
+	return;
 }
 
 /* called by executor()
  * calls execute_cmd
-*/
-static void	do_cmd(t_cmd *cmd, t_env *env_head)
+ */
+static void do_cmd(t_cmd *cmd, t_env *env_head)
 {
 	printf("no fork\n");
 	g_exit_code = execute_cmd(cmd, env_head);
@@ -162,7 +162,7 @@ static void	do_cmd(t_cmd *cmd, t_env *env_head)
  * utils/signal.c
  * 		set_signal()
  */
-void	executor(t_cmd *cmd_head, t_env *env_head)
+void executor(t_cmd *cmd_head, t_env *env_head)
 {
 	t_cmd *cmd_cur;
 
@@ -176,7 +176,7 @@ void	executor(t_cmd *cmd_head, t_env *env_head)
 		if (io_file_open(cmd_cur, env_head) == -1)
 		{
 			cmd_cur = cmd_cur->next;
-			continue ;
+			continue;
 		}
 		if (is_need_fork(cmd_cur))
 			do_fork_cmd(cmd_cur, env_head);
