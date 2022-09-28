@@ -35,7 +35,7 @@ static void	redirect_infile(t_cmd *cmd)
 
 static void	redirect_outfile(t_cmd *cmd)
 {
-	if (cmd->prev == false)
+	if (cmd->outfile < 0)
 		return ;
 	return (ft_dup2(cmd->outfile, STDOUT_FILENO));
 }

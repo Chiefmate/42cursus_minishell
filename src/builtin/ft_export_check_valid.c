@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_check_valid.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:18 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 16:41:40 by jham             ###   ########.fr       */
+/*   Updated: 2022/09/28 17:27:43 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	is_valid_letters(char *key_value)
 {
 	while (*key_value)
 	{
-		if (!ft_isalnum(*key_value) && *key_value != '_' && *key_value != '=')
+		if (*key_value == '=')
+			break ;
+		if (!ft_isalnum(*key_value) && *key_value != '_')
 			return (0);
 		++key_value;
 	}
