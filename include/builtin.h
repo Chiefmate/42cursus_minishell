@@ -35,6 +35,7 @@ int is_starting_with_digit(char *key_value);
 int is_have_space(char *key_value, char set);
 int is_have_specific_char(char *key_value, char c);
 int check_valid_identifier(int argc, char *argv[]);
+int	is_valid_letters(char *key_value);
 
 /* ft_export_no_arg_utils.c */
 t_env *dup_env_list(t_env *cur);

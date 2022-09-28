@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:25 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 20:29:03 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:42:58 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	swap_env(t_env *env1, t_env *env2)
 {
-	char *tmp_k;
-	char *tmp_v;
+	char	*tmp_k;
+	char	*tmp_v;
 
 	tmp_k = env1->key;
 	tmp_v = env1->value;
@@ -27,7 +27,7 @@ static void	swap_env(t_env *env1, t_env *env2)
 
 static t_env	*dup_env(t_env *cur)
 {
-	t_env *new;
+	t_env	*new;
 
 	new = (t_env *)ft_malloc(sizeof(t_env), 1);
 	if (cur == NULL)
@@ -49,9 +49,9 @@ static t_env	*dup_env(t_env *cur)
 
 t_env	*dup_env_list(t_env *cur)
 {
-	t_env *ret;
-	t_env *new;
-	t_env *tmp;
+	t_env	*ret;
+	t_env	*new;
+	t_env	*tmp;
 
 	ret = dup_env(cur);
 	tmp = ret;
@@ -72,7 +72,7 @@ t_env	*dup_env_list(t_env *cur)
 
 t_env	*sort_env_list(t_env *head)
 {
-	t_env *cur;
+	t_env	*cur;
 
 	cur = head;
 	while (cur->next->key)
@@ -90,7 +90,7 @@ t_env	*sort_env_list(t_env *head)
 
 void	free_env_list(t_env *env)
 {
-	t_env *next;
+	t_env	*next;
 
 	while (env->key)
 	{

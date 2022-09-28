@@ -6,13 +6,13 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:57:54 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 11:18:37 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:31:55 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int is_have_n(char *str)
+static int	is_have_n(char *str)
 {
 	if (str == NULL)
 		return (0);
@@ -26,10 +26,10 @@ static int is_have_n(char *str)
 	return (1);
 }
 
-static int check_option_n(int argc, char *argv[], int *idx)
+static int	check_option_n(int argc, char *argv[], int *idx)
 {
-	int i;
-	int option_n;
+	int	i;
+	int	option_n;
 
 	i = 1;
 	option_n = 0;
@@ -42,10 +42,10 @@ static int check_option_n(int argc, char *argv[], int *idx)
 	return (option_n);
 }
 
-int ft_echo(int argc, char *argv[])
+int	ft_echo(int argc, char *argv[])
 {
-	int idx;
-	int option_n;
+	int	idx;
+	int	option_n;
 
 	idx = 1;
 	option_n = check_option_n(argc, argv, &idx);

@@ -6,13 +6,13 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:02 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 11:18:52 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:32:19 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int ft_env(t_env *cur)
+int	ft_env(t_env *cur)
 {
 	while (cur->key != 0)
 	{

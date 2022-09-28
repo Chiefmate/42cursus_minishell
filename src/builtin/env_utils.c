@@ -6,17 +6,17 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:57:34 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:57:34 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:29:55 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-char *get_env_key(char *key_value)
+char	*get_env_key(char *key_value)
 {
-	size_t i;
-	size_t len;
-	char *key;
+	size_t	i;
+	size_t	len;
+	char	*key;
 
 	len = 0;
 	while (key_value[len] != 0 && key_value[len] != '=')
@@ -34,11 +34,11 @@ char *get_env_key(char *key_value)
 	return (key);
 }
 
-char *get_env_value(char *key_value)
+char	*get_env_value(char *key_value)
 {
-	size_t i;
-	size_t len;
-	char *value;
+	size_t	i;
+	size_t	len;
+	char	*value;
 
 	len = 0;
 	while (key_value[len] != 0 && key_value[len] != '=')
@@ -57,9 +57,9 @@ char *get_env_value(char *key_value)
 	return (value);
 }
 
-t_env *compare_env_key(t_env *env_head, char *key)
+t_env	*compare_env_key(t_env *env_head, char *key)
 {
-	t_env *cur;
+	t_env	*cur;
 
 	cur = env_head;
 	while (cur->key != 0 && ft_strncmp(key, cur->key, ft_strlen(cur->key)))
@@ -67,9 +67,9 @@ t_env *compare_env_key(t_env *env_head, char *key)
 	return (cur);
 }
 
-t_env *new_env(char *key_value)
+t_env	*new_env(char *key_value)
 {
-	t_env *new;
+	t_env	*new;
 
 	new = (t_env *)ft_malloc(sizeof(t_env), 1);
 	if (key_value == NULL)
@@ -93,10 +93,10 @@ t_env *new_env(char *key_value)
 	return (new);
 }
 
-int init_env_list(t_env *cur, char *envp[])
+int	init_env_list(t_env *cur, char *envp[])
 {
-	size_t i;
-	t_env *new;
+	size_t	i;
+	t_env	*new;
 
 	i = 0;
 	cur->key = get_env_key(envp[i]);

@@ -6,16 +6,16 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:55 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:29:01 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:46:56 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static void remove_env(t_env *env)
+static void	remove_env(t_env *env)
 {
-	t_env *next;
-	t_env *prev;
+	t_env	*next;
+	t_env	*prev;
 
 	next = env->next;
 	prev = env->prev;
@@ -26,10 +26,10 @@ static void remove_env(t_env *env)
 	free(env);
 }
 
-static int check_valid_key_identifier(int argc, char *argv[])
+static int	check_valid_key_identifier(int argc, char *argv[])
 {
-	int i;
-	int ret;
+	int	i;
+	int	ret;
 
 	i = 0;
 	ret = 0;
@@ -40,8 +40,8 @@ static int check_valid_key_identifier(int argc, char *argv[])
 			print_quote_err3("unset", "", "not a valid identifier");
 			return (-1);
 		}
-		if (is_have_specific_char(argv[i], '='))
-			ret = -1;
+		if (!is_valid_letters(argv[i]) || is_have_specific_char(argv[i], '='))
+			return (-1);
 		else if (is_have_space(argv[i], '\0'))
 			ret = -1;
 		else if (is_starting_with_digit(argv[i]))
@@ -55,20 +55,20 @@ static int check_valid_key_identifier(int argc, char *argv[])
 	return (0);
 }
 
-static void unset(t_env *env_head, char *key)
+static void	unset(t_env *env_head, char *key)
 {
-	t_env *env;
+	t_env	*env;
 
 	env = compare_env_key(env_head, key);
 	if (env->key == NULL)
-		return;
+		return ;
 	else
 		remove_env(env);
 }
 
-int ft_unset(int argc, char *argv[], t_env *env_head)
+int	ft_unset(int argc, char *argv[], t_env *env_head)
 {
-	int i;
+	int	i;
 
 	if (argc < 2)
 		return (0);

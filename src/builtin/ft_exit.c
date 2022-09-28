@@ -6,13 +6,13 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:10 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 11:19:41 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:34:10 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static int is_all_number(char *str)
+static int	is_all_number(char *str)
 {
 	while (*str)
 	{
@@ -23,9 +23,9 @@ static int is_all_number(char *str)
 	return (1);
 }
 
-static void exit_no_arg(t_cmd *cmd)
+static void	exit_no_arg(t_cmd *cmd)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = 0;
 	if (cmd->prev == NULL)
@@ -33,9 +33,9 @@ static void exit_no_arg(t_cmd *cmd)
 	exit(exit_code);
 }
 
-static void exit_two_arg(t_cmd *cmd)
+static void	exit_two_arg(t_cmd *cmd)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = 0;
 	if (cmd->prev == NULL)
@@ -50,9 +50,9 @@ static void exit_two_arg(t_cmd *cmd)
 	exit(exit_code);
 }
 
-int ft_exit(t_cmd *cmd)
+int	ft_exit(t_cmd *cmd)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = 0;
 	if (cmd->argc == 1)

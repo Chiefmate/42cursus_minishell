@@ -6,37 +6,37 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:58:32 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:29:44 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:35:38 by jham             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static void append_env(t_env *env, char *key, char *value)
+static void	append_env(t_env *env, char *key, char *value)
 {
-	t_env *new;
+	t_env	*new;
 
 	new = new_env(NULL);
 	new->prev = env;
 	env->next = new;
 	env->key = key;
 	env->value = value;
-	return;
+	return ;
 }
 
-static void change_env(t_env *env, char *key, char *value)
+static void	change_env(t_env *env, char *key, char *value)
 {
 	free(env->value);
 	free(key);
 	env->value = value;
-	return;
+	return ;
 }
 
-static int export_no_arg(t_env *env_head)
+static int	export_no_arg(t_env *env_head)
 {
-	t_env *tmp;
-	t_env *sorted_env;
-	t_env *cur;
+	t_env	*tmp;
+	t_env	*sorted_env;
+	t_env	*cur;
 
 	tmp = dup_env_list(env_head);
 	sorted_env = sort_env_list(tmp);
@@ -54,11 +54,11 @@ static int export_no_arg(t_env *env_head)
 	return (0);
 }
 
-void export_key_value(t_env *env_head, char *key_value)
+void	export_key_value(t_env *env_head, char *key_value)
 {
-	t_env *env;
-	char *key;
-	char *value;
+	t_env	*env;
+	char	*key;
+	char	*value;
 
 	key = get_env_key(key_value);
 	value = get_env_value(key_value);
@@ -67,13 +67,13 @@ void export_key_value(t_env *env_head, char *key_value)
 		change_env(env, key, value);
 	else
 		append_env(env, key, value);
-	return;
+	return ;
 }
 
-int ft_export(int argc, char *argv[], t_env *env_head)
+int	ft_export(int argc, char *argv[], t_env *env_head)
 {
-	int i;
-	int exit_code;
+	int	i;
+	int	exit_code;
 
 	exit_code = 0;
 	if (check_valid_identifier(argc, argv) == -1)
