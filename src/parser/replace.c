@@ -12,14 +12,15 @@
 
 #include "parser.h"
 
+/* concatenates letters, numbers, and '_'
+ * deals with $?
+ */
 static char	*replace_loop_dollar(char c, char *new, t_env *head, int quotes)
 {
 	static char	*env = NULL;
 
-	/* 문자, 숫자, 띄어쓰기라면 이어 붙이기 */
 	if (ft_isalnum(c) || c == '_')
 		env = ft_strjoin_char(env, c);
-	/* $? 처리하기 */
 	else if (c == '?' && env == NULL)
 	{
 		env = ft_itoa(g_exit_code);

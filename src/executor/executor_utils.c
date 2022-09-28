@@ -6,20 +6,19 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:19:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/26 20:55:27 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:17:36 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-/* 해당 커맨드가 fork한 뒤 실행되어야하는지 판단
+/* decides whether the cmd needs fork() sys call or not
  *
- * return	1	fork 해야할 때
- *			0	builtin이라 fork 안할 때
+ * return	1	if fork() needed
+ *			0	otherwise
  */
 int	is_need_fork(t_cmd *cmd)
 {
-	/* 앞 뒤로 명령어가 더 있는 경우 fork */
 	if (cmd->prev != NULL)
 		return (1);
 	if (cmd->is_pipe == true)
@@ -28,7 +27,6 @@ int	is_need_fork(t_cmd *cmd)
 		return (1);
 	if (cmd->outfile != -2)
 		return (1);
-	/* 파이프 만들 필요도 없고, builtin인 경우 fork 안함 */
 	if (!ft_strcmp(cmd->argv[0], "cd"))
 		return (0);
 	if (!ft_strcmp(cmd->argv[0], "export"))
@@ -41,8 +39,7 @@ int	is_need_fork(t_cmd *cmd)
 }
 
 /* called by execute_cmd()
- *
- * -74, -76로 바꾸었다가 실행 전 돌리는 이유 확인필요
+ * restores '<' and '>'
  */
 void	restore_redirection_char(t_cmd *cmd)
 {

@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init_clear_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:03 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:32:42 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:18:30 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// DONE
-
 #include "executor.h"
 
-/* executor()에서 호출되어 heredoc()을 호출함
- * return
+/* Called by executor()
+ * Calls  heredoc()
+ * Return
  * 		0	if successful
  * 		-1	if error
  * 
- * 사용 함수 (Dependencies)
+ * Dependencies
  * heredoc.c
  * 		heredoc()
  * tmp_file.c
@@ -42,9 +41,9 @@ int	init_heredoc(t_cmd *cmd)
 	return (0);
 }
 
-/* t_cmd 연결리스트의 모든 커맨드 삭제
+/* Deletes every cmd in t_cmd linked list
  * 
- * 사용 함수 (Dependencies)
+ * Dependencies
  * ft_close()
  * ft_free()
  * 
