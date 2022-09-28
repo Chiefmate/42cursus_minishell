@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:30:05 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 16:31:33 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:56:11 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_exit(t_cmd *cmd);
 int		is_starting_with_digit(char *key_value);
 int		is_have_space(char *key_value, char set);
 int		is_have_specific_char(char *key_value, char c);
+int		is_valid_letters(char *key_value);
 int		check_valid_identifier(int argc, char *argv[]);
 
 /* ft_export_no_arg_utils.c */

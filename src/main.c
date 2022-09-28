@@ -58,6 +58,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(argc, argv, envp, &env_head);
+	cmd = NULL;
 	while (1)
 	{
 		line = readline("minishell $ ");
