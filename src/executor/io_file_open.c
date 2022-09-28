@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:19:08 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:15:19 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
  */
 void	trim_cmd_argv(t_cmd *cmd, const char *set, int size)
 {
-	int i;
-	int tmp;
-	int tmp_argc;
+	int	i;
+	int	tmp;
+	int	tmp_argc;
 
 	i = -1;
 	tmp_argc = cmd->argc;
 	while (++i < cmd->argc)
 		if (!ft_strcmp(cmd->argv[i], set))
-			break;
+			break ;
 	if (i == cmd->argc)
-		return;
+		return ;
 	tmp = i;
 	cmd->argc -= size;
 	while (size--)
@@ -43,17 +43,17 @@ void	trim_cmd_argv(t_cmd *cmd, const char *set, int size)
 
 static void	infile_open(t_cmd *cmd)
 {
-	int i;
-	const char redir_in[2] = {-74, '\0'};
+	int			i;
+	const char	redir_in[2] = {-74, '\0'};
 
 	while (1)
 	{
 		i = -1;
 		while (cmd->argv[++i])
 			if (!ft_strcmp(cmd->argv[i], redir_in))
-				break;
+				break ;
 		if (cmd->argv[i] == NULL)
-			break;
+			break ;
 		if (cmd->infile > 0)
 			close(cmd->infile);
 		cmd->infile = open(cmd->argv[i + 1], O_RDONLY, 0644);
@@ -61,7 +61,7 @@ static void	infile_open(t_cmd *cmd)
 			print_err3(cmd->argv[i + 1], NULL, "No such file or directory");
 		trim_cmd_argv(cmd, redir_in, 2);
 	}
-	return;
+	return ;
 }
 
 /* 
@@ -70,9 +70,9 @@ static void	infile_open(t_cmd *cmd)
  */
 static void	outfile_open_trim(t_cmd *cmd, int i)
 {
-	int o_flag;
-	const char r_o[2] = {-76, '\0'};
-	const char r_a[3] = {-76, -76, '\0'};
+	int			o_flag;
+	const char	r_o[2] = {-76, '\0'};
+	const char	r_a[3] = {-76, -76, '\0'};
 
 	if (ft_strcmp(cmd->argv[i], r_o) == 0)
 	{
@@ -90,18 +90,18 @@ static void	outfile_open_trim(t_cmd *cmd, int i)
 
 static void	outfile_open(t_cmd *cmd)
 {
-	int i;
-	const char r_o[2] = {-76, '\0'};
-	const char r_a[3] = {-76, -76, '\0'};
+	int			i;
+	const char	r_o[2] = {-76, '\0'};
+	const char	r_a[3] = {-76, -76, '\0'};
 
 	while (1)
 	{
 		i = -1;
 		while (cmd->argv[++i])
 			if (!ft_strcmp(cmd->argv[i], r_o) || !ft_strcmp(cmd->argv[i], r_a))
-				break;
+				break ;
 		if (cmd->argv[i] == NULL)
-			break;
+			break ;
 		if (cmd->outfile > 0)
 			close(cmd->outfile);
 		outfile_open_trim(cmd, i);

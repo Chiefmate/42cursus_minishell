@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:08 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:20:14 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:13:10 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
  */
 static int	get_tmp_file_num(void)
 {
-	static int tmp_file_num;
+	static int	tmp_file_num;
 
 	return (tmp_file_num++);
 }
 
 char	*get_tmp_file_name(void)
 {
-	int tmp_num;
-	char *str_num;
-	char *file_name;
+	int		tmp_num;
+	char	*str_num;
+	char	*file_name;
 
 	while (1)
 	{

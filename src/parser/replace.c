@@ -122,5 +122,6 @@ void	replace(t_cmd *cmd, t_env *head)
 		}
 		cmd = cmd->next;
 	}
+	argc_checker(cmd);
 	return ;
 }

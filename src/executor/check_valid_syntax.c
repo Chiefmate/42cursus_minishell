@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:55 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/27 21:15:52 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:20:57 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /* when take a sole pipe with the command "$ |"
  * and enter the command "$?" to check the exit code, 
  * bash says "bash: 258: command not found"
- */ 
-static int check_pipe_syntax(t_cmd *cmd)
+ */
+static int	check_pipe_syntax(t_cmd *cmd)
 {
 	if (cmd->is_pipe && cmd->argc == 0)
 	{
@@ -29,12 +29,12 @@ static int check_pipe_syntax(t_cmd *cmd)
 
 /* print_err()
  */
-static int check_redirection_file(t_cmd *cmd, int i, int ret)
+static int	check_redirection_file(t_cmd *cmd, int i, int ret)
 {
-	const char oc[2] = {-76, '\0'};
-	const char oa[3] = {-76, -76, '\0'};
-	const char ic[2] = {-74, '\0'};
-	const char ia[3] = {-74, -76, '\0'};
+	const char	oc[2] = {-76, '\0'};
+	const char	oa[3] = {-76, -76, '\0'};
+	const char	ic[2] = {-74, '\0'};
+	const char	ia[3] = {-74, -76, '\0'};
 
 	if (cmd->argc == 0)
 		return (0);
@@ -61,9 +61,9 @@ static int check_redirection_file(t_cmd *cmd, int i, int ret)
  * and cmd "$?"
  * then you get 127: command not found
  */
-static int is_cmd_not_found(t_cmd *cmd)
+static int	is_cmd_not_found(t_cmd *cmd)
 {
-	if (cmd->is_dollar == false && cmd->argc == 1 && 
+	if (cmd->is_dollar == false && cmd->argc == 1 && \
 		!ft_strcmp(cmd->argv[0], ""))
 	{
 		print_err2("", "command not found");
@@ -80,9 +80,9 @@ static int is_cmd_not_found(t_cmd *cmd)
  *		-1	otherwise
  * every external functions are static functions in check_valid_syntax.c
  */
-int check_valid_syntax(t_cmd *cmd_head)
+int	check_valid_syntax(t_cmd *cmd_head)
 {
-	t_cmd *cur;
+	t_cmd	*cur;
 
 	cur = cmd_head;
 	if (cur->argc == 0)

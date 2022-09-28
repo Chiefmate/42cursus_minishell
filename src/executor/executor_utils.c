@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:19:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:17:36 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:20:29 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,33 @@ void	restore_redirection_char(t_cmd *cmd)
 		}
 		i++;
 	}
+}
+
+char	**get_env_arr(t_env *head)
+{
+	int		i;
+	int		size;
+	char	*key;
+	t_env	*tmp;
+	char	**ret;
+
+	i = 0;
+	size = 0;
+	tmp = head;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	ret = malloc(sizeof(char *) * size);
+	tmp = head;
+	while (i < size - 1)
+	{
+		key = ft_strjoin(tmp->key, "=");
+		ret[i++] = ft_strjoin(key, tmp->value);
+		tmp = tmp->next;
+		free(key);
+	}
+	ret[i] = NULL;
+	return (ret);
 }
