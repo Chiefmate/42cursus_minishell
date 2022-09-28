@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   io_file_open.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:32:48 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:19:08 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-/* infile_open(), outfile_open_trim(), fork_heredoc()에서 호출됨
+/* Called by infile_open(), outfile_open_trim(), fork_heredoc()
  */
 void	trim_cmd_argv(t_cmd *cmd, const char *set, int size)
 {
@@ -65,8 +65,8 @@ static void	infile_open(t_cmd *cmd)
 }
 
 /* 
- * 왜??
- * -76을 배열에 넣는 이유가 무엇인지 확인 필요
+ * redir_outfile
+ * redir_append
  */
 static void	outfile_open_trim(t_cmd *cmd, int i)
 {
@@ -88,10 +88,6 @@ static void	outfile_open_trim(t_cmd *cmd, int i)
 	}
 }
 
-/* 
- * 왜??
- * -76을 배열에 넣는 이유가 무엇인지 확인 필요
- */
 static void	outfile_open(t_cmd *cmd)
 {
 	int i;
@@ -112,9 +108,10 @@ static void	outfile_open(t_cmd *cmd)
 	}
 }
 
-/* executor()에서 호출되어 cmd에 pipefd[2]와 infile, outfile 대입
+/* Called by executor()
+ * assigns pipefd[2], infile, and outfile to the cmd
  * 
- * 외부함수
+ * External Functions
  * io_file_open.c(self)
  * 		infile_open()
  * 		outfile_open()

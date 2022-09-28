@@ -13,27 +13,27 @@
 #include "executor.h"
 
 /* 
- * 이해 필요
+ * waits a child process
  *
- * 외부함수
+ * External Functions
  * wait()
  * 
+ * WEXITSTATUS()
  * WIFSIGNALED()
  * WTERMSIG()
- * WEXITSTATUS()
  */
 void	wait_child(void)
 {
-	int	status;
+	int	wstatus;
 	int	signo;
 	int	i;
 
 	i = 0;
-	while (wait(&status) != -1)
+	while (wait(&wstatus) != -1)
 	{
-		if (WIFSIGNALED(status))
+		if (WIFSIGNALED(wstatus))
 		{
-			signo = WTERMSIG(status);
+			signo = WTERMSIG(wstatus);
 			if (signo == SIGINT && i++ == 0)
 				ft_putstr_fd("^C\n", STDERR_FILENO);
 			else if (signo == SIGQUIT && i++ == 0)
@@ -41,6 +41,6 @@ void	wait_child(void)
 			g_exit_code = 128 + signo;
 		}
 		else
-			g_exit_code = WEXITSTATUS(status);
+			g_exit_code = WEXITSTATUS(wstatus);
 	}
 }

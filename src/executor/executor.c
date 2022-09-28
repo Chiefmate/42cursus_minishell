@@ -6,7 +6,7 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:10:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 11:20:58 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 15:45:07 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ static void do_fork_cmd(t_cmd *cmd, t_env *env_head)
 	pid_t pid;
 	int exit_code;
 
-	printf("entered fork\n");
 	set_signal(DFL, DFL);
 	pid = ft_fork();
 	if (!pid)
@@ -138,7 +137,6 @@ static void do_fork_cmd(t_cmd *cmd, t_env *env_head)
  */
 static void do_cmd(t_cmd *cmd, t_env *env_head)
 {
-	printf("no fork\n");
 	g_exit_code = execute_cmd(cmd, env_head);
 	close_unused_fd(cmd, 1);
 }

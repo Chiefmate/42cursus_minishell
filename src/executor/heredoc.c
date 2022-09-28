@@ -6,7 +6,7 @@
 /*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 11:20:32 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 15:45:04 by hamjongseog      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int check_heredoc(t_cmd *cmd)
 	return (idx);
 }
 
-/* fork_heredoc()에서 호출되어
- * heredoc의 input을 readline()을 통해 받아서
- * cmd->infile에 write함
+/* Called by fork_heredoc()
+ * Takes heredoc input by readline()
+ * and writes into cmd->infile
  *
- * 외부함수
+ * External Functions
  * readline()
  * ft_write()
  */
@@ -96,9 +96,10 @@ static int fork_heredoc(t_cmd *cmd, int lim_idx)
 	return (ret);
 }
 
-/*	init_heredoc()에서 호출되어 heredoc 기능 수행
+/*	Called by init_heredoc()
+ * Executes heredoc
  *
- * 외부함수
+ * External Functions
  * heredoc.c (self)
  * 		check_heredoc()
  * 		fork_heredoc()
@@ -123,6 +124,7 @@ int heredoc(t_cmd *cmd_head)
 		if (cur->infile > 0)
 			ft_close(cur->infile);
 		tmp_file = get_tmp_file_name();
+		cur->infile = ft_open(tmp_file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		exit_code = fork_heredoc(cur, idx);
 		g_exit_code = exit_code;
 		if (exit_code == 0)
