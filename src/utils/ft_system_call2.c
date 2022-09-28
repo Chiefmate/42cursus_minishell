@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:38 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/26 20:24:56 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:24:52 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	*ft_malloc(size_t size, size_t n)
 
 void	ft_execve(const char *file, char *const *argv, char *const *envp)
 {
-	printf("execve file: %s\nargv[0]: %s\n", file, argv[0]);
 	if (execve(file, argv, envp) == -1)
 		exit_with_err("execve()", strerror(errno), 126);
 	return ;

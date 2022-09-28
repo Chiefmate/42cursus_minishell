@@ -12,7 +12,7 @@
 
 #include "executor.h"
 
-/* execute.c/do_fork_cmd()에서 호출됨
+/* Called by execute.c/do_fork_cmd()
  */
 void	close_unused_fd(t_cmd *cmd, pid_t pid)
 {

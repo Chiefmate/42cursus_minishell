@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:08 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 14:33:03 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:20:14 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
+/* static var initialized to 0
+ */
 static int	get_tmp_file_num(void)
 {
 	static int tmp_file_num;
 
-	return (tmp_file_num++); // static 변수는 0으로 초기화됨 1
+	return (tmp_file_num++);
 }
 
 char	*get_tmp_file_name(void)

@@ -46,8 +46,6 @@ int	main(int argc, char *argv[], char *envp[])
 	t_env			env_head;
 	struct termios	term;
 
-	char			dbg_buf[50] = {0, };
-
 	tcgetattr(STDIN_FILENO, &term);
 	main_init(argc, argv);
 	init_env_list(&env_head, envp);
@@ -60,10 +58,6 @@ int	main(int argc, char *argv[], char *envp[])
 			add_history(line);
 		if (*line != '\0' && !is_white_space(line))
 		{
-			//dbg
-			getcwd(dbg_buf, 49);
-			printf("main curr dir is %s\n", dbg_buf);
-			
 			cmd = ft_list_init();
 			parse(line, cmd);
 			replace(cmd, &env_head);

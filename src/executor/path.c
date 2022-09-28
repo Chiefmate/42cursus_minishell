@@ -69,13 +69,16 @@ static int	check_relative(char *str)
 	return (ret);
 }
 
-/* io_file_open.c/io_file_open()에서 호출되어 cmd의 path를 반환
- * external functions
+/* Called by io_file_open.c/io_file_open()
+ * Returns the path of the cmd
+ *
+ * External Functions
  * path.c (Self)
  * 		check_relative()
  * 		get_absolute_path()
  * ft_getenv()
- * is_exist_file()
+ * utils/is_exist_file.c
+ * 		is_exist_file()
  */
 char	*get_cmd_path(t_cmd *cmd, t_env *env_head)
 {
