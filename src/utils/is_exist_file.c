@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:43 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:40:06 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:52:16 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_exist_file(char *tmp_file_name)
 {
-	int fd;
+	int	fd;
 
 	fd = open(tmp_file_name, O_RDONLY);
 	close(fd);

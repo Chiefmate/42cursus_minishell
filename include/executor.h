@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:57:20 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:20:14 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	wait_child(void);
 /* executor_utils.c */
 int		is_need_fork(t_cmd *cmd);
 void	restore_redirection_char(t_cmd *cmd);
+char	**get_env_arr(t_env *head);
 
 /* path.c */
 char	*get_cmd_path(t_cmd *cmd, t_env *env_head);

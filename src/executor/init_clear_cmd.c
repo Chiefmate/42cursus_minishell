@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:03 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:18:30 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:15:08 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  */
 int	init_heredoc(t_cmd *cmd)
 {
-	t_cmd *cur;
+	t_cmd	*cur;
 
 	cur = cmd;
 	while (cur)

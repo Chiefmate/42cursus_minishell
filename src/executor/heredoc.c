@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamjongseog <hamjongseog@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:11:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/28 15:45:04 by hamjongseog      ###   ########.fr       */
+/*   Updated: 2022/09/28 16:16:36 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-static int check_heredoc(t_cmd *cmd)
+static int	check_heredoc(t_cmd *cmd)
 {
-	int idx;
-	const char redir_h[3] = {-74, -74, '\0'};
+	int			idx;
+	const char	redir_h[3] = {-74, -74, '\0'};
 
 	idx = -1;
 	while (cmd->argv[++idx])
 		if (!ft_strcmp(cmd->argv[idx], redir_h))
-			break;
+			break ;
 	if (cmd->argv[idx] == NULL)
 		return (-1);
 	return (idx);
@@ -34,21 +34,21 @@ static int check_heredoc(t_cmd *cmd)
  * readline()
  * ft_write()
  */
-static void input_heredoc(t_cmd *cmd, int lim_idx)
+static void	input_heredoc(t_cmd *cmd, int lim_idx)
 {
-	char *line;
-	char *limiter;
+	char	*line;
+	char	*limiter;
 
 	limiter = cmd->argv[lim_idx];
 	while (1)
 	{
 		line = readline("> ");
 		if (!line)
-			break;
+			break ;
 		else if (!ft_strcmp(line, limiter))
 		{
 			free(line);
-			break;
+			break ;
 		}
 		ft_write(cmd->infile, line, ft_strlen(line));
 		ft_write(cmd->infile, "\n", 1);
@@ -56,10 +56,10 @@ static void input_heredoc(t_cmd *cmd, int lim_idx)
 	}
 }
 
-static int wait_heredoc(pid_t pid)
+static int	wait_heredoc(pid_t pid)
 {
-	int status;
-	int signo;
+	int	status;
+	int	signo;
 
 	waitpid(pid, &status, 0);
 	if (WIFSIGNALED(status))
@@ -71,11 +71,11 @@ static int wait_heredoc(pid_t pid)
 	return (0);
 }
 
-static int fork_heredoc(t_cmd *cmd, int lim_idx)
+static int	fork_heredoc(t_cmd *cmd, int lim_idx)
 {
-	pid_t pid;
-	int ret;
-	const char redir_h[3] = {-74, -74, '\0'};
+	pid_t		pid;
+	int			ret;
+	const char	redir_h[3] = {-74, -74, '\0'};
 
 	set_signal(DFL, SHE);
 	pid = fork();
@@ -108,12 +108,12 @@ static int fork_heredoc(t_cmd *cmd, int lim_idx)
  * ft_open()
  * ft_close()
  */
-int heredoc(t_cmd *cmd_head)
+int	heredoc(t_cmd *cmd_head)
 {
-	char *tmp_file;
-	int idx;
-	int exit_code;
-	t_cmd *cur;
+	char	*tmp_file;
+	int		idx;
+	int		exit_code;
+	t_cmd	*cur;
 
 	while (1)
 	{
