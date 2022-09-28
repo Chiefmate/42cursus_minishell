@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:48 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 00:36:48 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:39:56 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void signal_handler(int signo)
+void	signal_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
@@ -28,7 +28,7 @@ void signal_handler(int signo)
 	}
 }
 
-void set_signal(int sig_int, int sig_quit)
+void	set_signal(int sig_int, int sig_quit)
 {
 	if (sig_int == IGN)
 		signal(SIGINT, SIG_IGN);
