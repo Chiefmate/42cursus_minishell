@@ -92,7 +92,6 @@ void	parse(char *line, t_cmd *cmd)
 			str = parse_out_pipe(str, line, quotes, &pipe);
 		line++;
 	}
-
 	if (quotes != 0)
 		exit_with_err("quotes error", NULL, 1);
 	if (str != NULL)
@@ -101,4 +100,3 @@ void	parse(char *line, t_cmd *cmd)
 		str = ft_free(str);
 	}
 }
-

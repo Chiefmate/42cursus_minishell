@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:32:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 14:59:31 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:29:40 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ typedef struct s_cmd
 	char			**argv;
 	bool			is_pipe;
 	bool			is_dollar;
-	int				fd[2];	 // pipe
-	int				infile;	 // redirection
-	int				outfile; // redirection
+	int				fd[2];
+	int				infile;
+	int				outfile;
 	char			*cmd_path;
 	struct s_cmd	*prev;
 	struct s_cmd	*next;
 }	t_cmd;
 
-typedef struct	s_env
+typedef struct s_env
 {
-	char *key;
-	char *value;
-	struct s_env *next;
-	struct s_env *prev;
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+	struct s_env	*prev;
 }	t_env;
 
 void	*ft_free(void *ptr);

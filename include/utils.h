@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:32:30 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/24 15:46:16 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:21:20 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ pid_t	ft_fork(void);
 /* ft_system_call2.c */
 int		ft_write(int fd, const void *buf, size_t byte);
 void	*ft_malloc(size_t size, size_t n);
-void	ft_execve(const char *file, char * const *argv, char * const *envp);
+void	ft_execve(const char *file, char *const *argv, char *const *envp);
 char	*ft_getcwd(char *buf, size_t size);
 
 /* is_exist_file.c */

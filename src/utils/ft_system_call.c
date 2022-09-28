@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:36:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/09/23 19:14:58 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:10:52 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_open(char *fname, int oflag, int mode)
 {
-	int fd;
+	int	fd;
 
 	fd = open(fname, oflag, mode);
 	if (fd < 0)

@@ -26,6 +26,6 @@
 # include "../libft/libft.h"
 
 int		is_white_space(char *line);
-void	main_init(int argc, char *argv[]);
+void	main_init(int argc, char *argv[], char *envp[], t_env *env_head);
 
 #endif

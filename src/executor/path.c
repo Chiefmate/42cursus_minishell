@@ -17,7 +17,7 @@ static void	free_path(char **path)
 	size_t	i;
 
 	i = 0;
-	while(path[i])
+	while (path[i])
 		free(path[i++]);
 	free(path);
 	return ;
@@ -62,7 +62,7 @@ static int	check_relative(char *str)
 	ret = 0;
 	while (!ft_isalnum(str[i]))
 	{
-		if (str[i] == '.' || str[i] =='/')
+		if (str[i] == '.' || str[i] == '/')
 			ret = 1;
 		i++;
 	}
